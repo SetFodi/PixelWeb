@@ -1,11 +1,13 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
-const ALLOWED_IPS = new Set<string>([
-  '31.146.70.219', // user IP
-  '127.0.0.1',     // localhost (dev)
-  '::1',           // localhost IPv6 (dev)
-])
+// Read admin IPs from environment variable
+const getAdminIPs = () => {
+  const ips = process.env.ADMIN_IPS?.split(',').map(ip => ip.trim()) || []
+  return new Set([...ips, '127.0.0.1', '::1']) // Always include localhost for dev
+}
+
+const ALLOWED_IPS = getAdminIPs()
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl

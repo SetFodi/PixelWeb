@@ -5,10 +5,12 @@ import Link from 'next/link'
 import { FaExternalLinkAlt, FaComments, FaChartLine, FaShieldAlt, FaCog, FaGlobe, FaUsers, FaEnvelope, FaWhatsapp, FaPhone, FaRocket, FaCheckCircle, FaTimesCircle, FaSpinner } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 
-// Admin IP whitelist - only these IPs can access this page
-const ADMIN_IPS = [
-  '31.146.70.219',
-]
+// Admin IPs from environment variable (parsed client-side from API or fallback)
+const getAdminIPs = (): string[] => {
+  // In client components, we can't access env vars directly
+  // We'll check via API or trust the middleware protection
+  return []
+}
 
 const AdminPage = () => {
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null)
@@ -16,21 +18,20 @@ const AdminPage = () => {
   const [currentTime, setCurrentTime] = useState<string>('')
 
   useEffect(() => {
-    // Check if user's IP is in admin list
-    const checkAdminAccess = async () => {
+    // Middleware protects this route, so if we got here, we're an admin
+    // Just get IP for display purposes
+    const getIP = async () => {
       try {
         const response = await fetch('https://api.ipify.org?format=json')
         const data = await response.json()
-        const ip = data.ip
-        setUserIP(ip)
-        setIsAdmin(ADMIN_IPS.includes(ip))
+        setUserIP(data.ip)
       } catch (error) {
-        console.error('Failed to verify admin access')
-        setIsAdmin(false)
+        console.error('Failed to get IP')
       }
+      // If we reached this page, middleware allowed us = we're admin
+      setIsAdmin(true)
     }
-
-    checkAdminAccess()
+    getIP()
 
     // Update time
     const updateTime = () => {

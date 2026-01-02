@@ -10,6 +10,7 @@ import { Analytics } from '@vercel/analytics/react'
 import ScrollToTopButton from '@/components/ScrollToTopButton'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import StickyContactBar from '@/components/StickyContactBar'
+import OnlineCounter from '@/components/OnlineCounter'
 import { Suspense } from 'react'
 
 export const metadata: Metadata = {
@@ -259,6 +260,7 @@ export default function RootLayout({
             <ScrollToTopButton />
             <StickyContactBar />
             <WhatsAppButton />
+            <OnlineCounter />
             <Analytics />
           </SnowProvider>
         </ThemeProvider>

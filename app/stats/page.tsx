@@ -6,10 +6,12 @@ import { FaEye, FaUsers, FaChartBar, FaClock, FaShieldAlt, FaSpinner } from 'rea
 import PageTransition from '@/components/PageTransition'
 import Link from 'next/link'
 
-// Admin IP whitelist
-const ADMIN_IPS = [
-  '31.146.70.219',
-]
+// Admin IPs from environment variable (parsed client-side from API or fallback)
+const getAdminIPs = (): string[] => {
+  // In client components, we can't access env vars directly
+  // We'll check via API or trust the middleware protection
+  return []
+}
 
 interface VisitData {
   totalVisits: number
@@ -29,21 +31,21 @@ export default function StatsPage() {
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null)
   const [userIP, setUserIP] = useState<string>('')
 
-  // Check admin access
+  // Middleware protects this route, so if we got here, we're an admin
+  // Just get IP for display purposes
   useEffect(() => {
-    const checkAdminAccess = async () => {
+    const getIP = async () => {
       try {
         const response = await fetch('https://api.ipify.org?format=json')
         const data = await response.json()
-        const ip = data.ip
-        setUserIP(ip)
-        setIsAdmin(ADMIN_IPS.includes(ip))
+        setUserIP(data.ip)
       } catch (error) {
-        console.error('Failed to verify admin access')
-        setIsAdmin(false)
+        console.error('Failed to get IP')
       }
+      // If we reached this page, middleware allowed us = we're admin
+      setIsAdmin(true)
     }
-    checkAdminAccess()
+    getIP()
   }, [])
 
   const fetchStats = async () => {
@@ -60,9 +62,9 @@ export default function StatsPage() {
 
   useEffect(() => {
     if (isAdmin) {
-    fetchStats()
-    const interval = setInterval(fetchStats, 30000)
-    return () => clearInterval(interval)
+      fetchStats()
+      const interval = setInterval(fetchStats, 30000)
+      return () => clearInterval(interval)
     }
   }, [isAdmin])
 
@@ -85,7 +87,7 @@ export default function StatsPage() {
     return (
       <PageTransition>
         <div className="min-h-screen pt-32 pb-20 flex items-center justify-center bg-gray-50 dark:bg-gray-900">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="text-center max-w-md mx-auto px-4"
@@ -157,12 +159,12 @@ export default function StatsPage() {
               რეალურ დროში განახლებული მონაცემები
             </p>
             <div className="flex gap-3 mt-4">
-            <button
-              onClick={fetchStats}
+              <button
+                onClick={fetchStats}
                 className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm"
-            >
-              🔄 განახლება
-            </button>
+              >
+                🔄 განახლება
+              </button>
               <Link
                 href="/admin"
                 className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors text-sm"
@@ -313,7 +315,7 @@ export default function StatsPage() {
           {/* Note */}
           <div className="mt-8 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
             <p className="text-sm text-yellow-800 dark:text-yellow-200">
-              <strong>ℹ️ შენიშვნა:</strong> ეს არის მარტივი in-memory ტრეკერი. მონაცემები განულდება სერვერის რესტარტისას. 
+              <strong>ℹ️ შენიშვნა:</strong> ეს არის მარტივი in-memory ტრეკერი. მონაცემები განულდება სერვერის რესტარტისას.
               პროდუქციისთვის გირჩევთ Vercel Analytics-ს ან დატაბაზის გამოყენებას.
             </p>
           </div>
