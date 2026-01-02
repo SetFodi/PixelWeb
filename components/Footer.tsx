@@ -1,8 +1,12 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { FaFacebook, FaInstagram, FaEnvelope, FaPhone, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa'
+import { useLanguage } from '@/context/LanguageContext'
 
 const Footer = () => {
+  const { t } = useLanguage()
   const currentYear = new Date().getFullYear()
 
   return (
@@ -21,7 +25,7 @@ const Footer = () => {
               className="h-10 sm:h-12 w-auto mb-4 object-contain dark:brightness-150 dark:saturate-200 dark:contrast-125"
             />
             <p className="text-gray-600 dark:text-gray-400 mb-4">
-              პროფესიონალური ვებსაიტები ხელმისაწვდომ ფასად. გთავაზობთ საუკეთესო ხარისხს ხელმისაწვდომ ფასად საქართველოში
+              {t.footer.desc}
             </p>
             <div className="flex space-x-4">
               <a
@@ -68,36 +72,36 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">სწრაფი ბმულები</h3>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">{t.footer.quickLinks}</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                  მთავარი
+                  {t.nav.home}
                 </Link>
               </li>
               <li>
                 <Link href="/services" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                  სერვისები
+                  {t.nav.services}
                 </Link>
               </li>
               <li>
                 <Link href="/portfolio" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                  პორტფოლიო
+                  {t.nav.portfolio}
                 </Link>
               </li>
               <li>
                 <Link href="/blog" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                  ბლოგი
+                  {t.nav.blog}
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                  ჩვენ შესახებ
+                  {t.nav.about}
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                  კონტაქტი
+                  {t.nav.contact}
                 </Link>
               </li>
             </ul>
@@ -105,40 +109,40 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">სერვისები</h3>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">{t.footer.servicesTitle}</h3>
             <ul className="space-y-2">
               <li className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors cursor-pointer">
                 <Link href="/saitis-damzadeba">
-                  საიტის დამზადება
+                  {t.footer.serviceItems.websiteCreation}
                 </Link>
               </li>
               <li className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors cursor-pointer">
                 <Link href="/services">
-                  Landing Page
+                  {t.footer.serviceItems.landing}
                 </Link>
               </li>
               <li className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors cursor-pointer">
-                საწარმოს ვებსაიტი
+                {t.footer.serviceItems.business}
               </li>
               <li className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors cursor-pointer">
-                ელექტრონული კომერცია
+                {t.footer.serviceItems.ecommerce}
               </li>
               <li className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors cursor-pointer">
-                პორტფოლიო საიტი
+                {t.footer.serviceItems.portfolio}
               </li>
               <li className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors cursor-pointer">
-                საბაზრო ადგილი
+                {t.footer.serviceItems.marketplace}
               </li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">კონტაქტი</h3>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">{t.footer.contact}</h3>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <FaMapMarkerAlt className="text-primary-600 dark:text-primary-400 mt-1" />
-                <span>თბილისი, საქართველო</span>
+                <span>{t.footer.address}</span>
               </li>
               <li className="flex items-center space-x-3">
                 <FaPhone className="text-primary-600 dark:text-primary-400" />
@@ -153,7 +157,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-300 dark:border-white/5 mt-8 pt-8 text-center text-gray-600 dark:text-gray-400">
-          <p>&copy; {currentYear} PixelWeb.ge. ყველა უფლება დაცულია.</p>
+          <p>&copy; {currentYear} PixelWeb.ge. {t.footer.rights}.</p>
         </div>
       </div>
     </footer>

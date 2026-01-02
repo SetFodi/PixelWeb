@@ -6,15 +6,15 @@ import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import ThemeToggle from './ThemeToggle'
-import SnowToggle from './SnowToggle'
-import { useSnow } from './SnowProvider'
+import LanguageSwitcher from './LanguageSwitcher'
+import { useLanguage } from '@/context/LanguageContext'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
   const pathname = usePathname()
-  const { snowEnabled, toggleSnow } = useSnow()
+  const { t } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,12 +36,12 @@ const Navbar = () => {
   }
 
   const navLinks = [
-    { href: '/', label: 'მთავარი' },
-    { href: '/services', label: 'სერვისები' },
-    { href: '/portfolio', label: 'პორტფოლიო' },
-    { href: '/blog', label: 'ბლოგი' },
-    { href: '/about', label: 'ჩვენ შესახებ' },
-    { href: '/contact', label: 'კონტაქტი' },
+    { href: '/', label: t.nav.home },
+    { href: '/services', label: t.nav.services },
+    { href: '/portfolio', label: t.nav.portfolio },
+    { href: '/blog', label: t.nav.blog },
+    { href: '/about', label: t.nav.about },
+    { href: '/contact', label: t.nav.contact },
   ]
 
   return (
@@ -81,21 +81,15 @@ const Navbar = () => {
                 />
               </Link>
             ))}
-            <Link
-              href="/contact"
-              className="ml-2 xl:ml-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white px-4 xl:px-6 py-2 xl:py-2.5 rounded-lg hover:from-primary-700 hover:to-primary-800 transition-all hover:shadow-lg hover:shadow-primary-500/50 transform hover:-translate-y-0.5 text-sm xl:text-base font-semibold"
-            >
-              დაგვიკავშირდით
-            </Link>
             <div className="ml-3 xl:ml-4 flex items-center gap-2">
-              <SnowToggle enabled={snowEnabled} onToggle={toggleSnow} />
+              <LanguageSwitcher />
               <ThemeToggle />
             </div>
           </div>
 
           {/* Mobile/Tablet Menu Button & Theme Toggle */}
           <div className="lg:hidden flex items-center space-x-2">
-            <SnowToggle enabled={snowEnabled} onToggle={toggleSnow} />
+            <LanguageSwitcher />
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -130,13 +124,6 @@ const Navbar = () => {
                     </span>
                   </Link>
                 ))}
-                <Link
-                  href="/contact"
-                  onClick={() => setIsOpen(false)}
-                  className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-4 py-3 rounded-lg hover:from-primary-700 hover:to-primary-800 transition-all text-center font-semibold mt-2 hover:shadow-lg"
-                >
-                  დაგვიკავშირდით
-                </Link>
               </div>
             </div>
           </div>

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { FaCheck, FaTimes, FaArrowRight } from 'react-icons/fa'
 import { ReactNode } from 'react'
+import { useLanguage } from '@/context/LanguageContext'
 
 export interface PricingService {
     icon: ReactNode
@@ -26,6 +27,7 @@ interface PricingCardProps {
 }
 
 const PricingCard = ({ service, index, delay = 0 }: PricingCardProps) => {
+    const { t } = useLanguage()
     const gradients = [
         'from-blue-500 to-cyan-500',
         'from-primary-500 to-primary-600',
@@ -43,8 +45,8 @@ const PricingCard = ({ service, index, delay = 0 }: PricingCardProps) => {
         >
             {/* Card */}
             <div className={`h-full bg-white dark:bg-gray-900 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${service.popular
-                    ? 'ring-2 ring-primary-500 shadow-lg'
-                    : 'border border-gray-200 dark:border-gray-800 shadow-md'
+                ? 'ring-2 ring-primary-500 shadow-lg'
+                : 'border border-gray-200 dark:border-gray-800 shadow-md'
                 }`}>
 
                 {/* Top gradient bar */}
@@ -55,7 +57,7 @@ const PricingCard = ({ service, index, delay = 0 }: PricingCardProps) => {
                     {service.popular && (
                         <div className="mb-4">
                             <span className="inline-flex items-center gap-1.5 bg-primary-500 text-white text-xs font-semibold px-3 py-1.5 rounded-full">
-                                ⭐ რეკომენდებული
+                                ⭐ {t.home.pricing.popular}
                             </span>
                         </div>
                     )}
@@ -79,7 +81,7 @@ const PricingCard = ({ service, index, delay = 0 }: PricingCardProps) => {
                             <span className={`text-4xl font-bold bg-gradient-to-r ${gradient} bg-clip-text text-transparent`}>
                                 {service.price}
                             </span>
-                            <span className="text-lg font-medium text-gray-400">₾</span>
+                            <span className="text-lg font-medium text-gray-400">{t.home.pricing.currency}</span>
                         </div>
                         <div className="flex flex-wrap items-center gap-3 mt-2">
                             <span className="text-sm text-gray-500 dark:text-gray-400">
@@ -87,7 +89,7 @@ const PricingCard = ({ service, index, delay = 0 }: PricingCardProps) => {
                             </span>
                             {service.marketPrice && (
                                 <span className="text-sm text-red-500 line-through">
-                                    ბაზარზე: {service.marketPrice}₾
+                                    {t.home.pricing.marketPrice}: {service.marketPrice}{t.home.pricing.currency}
                                 </span>
                             )}
                         </div>
@@ -113,11 +115,11 @@ const PricingCard = ({ service, index, delay = 0 }: PricingCardProps) => {
                     <Link
                         href="/contact"
                         className={`flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-semibold transition-all duration-200 ${service.popular
-                                ? `bg-gradient-to-r ${gradient} text-white hover:opacity-90`
-                                : 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700'
+                            ? `bg-gradient-to-r ${gradient} text-white hover:opacity-90`
+                            : 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700'
                             }`}
                     >
-                        დაიწყე ახლავე
+                        {t.home.pricing.startNow}
                         <FaArrowRight className="text-sm" />
                     </Link>
                 </div>

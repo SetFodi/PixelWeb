@@ -6,6 +6,7 @@ import { FaCode, FaRocket, FaMobile, FaCheck, FaArrowRight, FaFileAlt, FaBriefca
 import Link from 'next/link'
 import PageTransition from '@/components/PageTransition'
 import PricingCard from '@/components/PricingCard'
+import { useLanguage } from '@/context/LanguageContext'
 
 declare global {
   interface Window {
@@ -58,6 +59,7 @@ const AnimatedStat = ({ number, suffix, label }: { number: number; suffix: strin
 }
 
 const ClientHome = () => {
+  const { t } = useLanguage()
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -80,7 +82,7 @@ const ClientHome = () => {
 
   const phoneY = useTransform(springY, (val) => val * 0.8);
   const phoneRotateX = useTransform(springY, (val) => val * -0.1);
-  const phoneRotateY = useTransform(springX, (val) => val * 0.1);
+  const phoneRotateY = useTransform(springY, (val) => val * 0.1);
 
   const macY = useTransform(springY, (val) => val * -0.6);
   const macRotateX = useTransform(springY, (val) => val * 0.05);
@@ -99,83 +101,59 @@ const ClientHome = () => {
   const features = [
     {
       icon: <FaMoneyBillWave className="text-4xl text-primary-600 dark:text-primary-400" />,
-      title: 'ხელმისაწვდომი ფასები',
-      description: 'ბაზრის ფასებთან შედარებით 30%-მდე იაფია. ხარისხიანი ვებსაიტები ყველასთვის ხელმისაწვდომ ფასად.'
+      title: t.home.features.items[0].title,
+      description: t.home.features.items[0].desc
     },
     {
       icon: <FaClock className="text-4xl text-primary-600 dark:text-primary-400" />,
-      title: 'სწრაფი მიწოდება',
-      description: 'თქვენი პროექტი მზად იქნება მოკლე ვადებში. ჩვენ ვაფასებთ თქვენს დროს.'
+      title: t.home.features.items[1].title,
+      description: t.home.features.items[1].desc
     },
     {
       icon: <FaRocket className="text-4xl text-primary-600 dark:text-primary-400" />,
-      title: 'თანამედროვე დიზაინი',
-      description: 'ულტრა თანამედროვე, სწრაფი და მობილურზე ოპტიმიზირებული ვებსაიტები.'
+      title: t.home.features.items[2].title,
+      description: t.home.features.items[2].desc
     },
     {
       icon: <FaCode className="text-4xl text-primary-600 dark:text-primary-400" />,
-      title: 'პროფესიონალური კოდი',
-      description: 'სუფთა, ოპტიმიზირებული და მასშტაბირებადი კოდი უახლესი ტექნოლოგიებით.'
+      title: t.home.features.items[3].title,
+      description: t.home.features.items[3].desc
     },
     {
       icon: <FaMobile className="text-4xl text-primary-600 dark:text-primary-400" />,
-      title: 'რესპონსიული დიზაინი',
-      description: 'თქვენი საიტი იდეალურად გამოიყურება ყველა მოწყობილობაზე.'
+      title: t.home.features.items[4].title,
+      description: t.home.features.items[4].desc
     },
     {
       icon: <FaPalette className="text-4xl text-primary-600 dark:text-primary-400" />,
-      title: 'მორგებული გადაწყვეტილებები',
-      description: 'ყველა პროექტი უნიკალურია და შექმნილია თქვენი საჭიროებების მიხედვით.'
+      title: t.home.features.items[5].title,
+      description: t.home.features.items[5].desc
     }
   ]
 
   const stats = [
-    { number: 30, suffix: '%', label: 'იაფი ბაზართან შედარებით' },
-    { number: 11, suffix: '+', label: 'დასრულებული პროექტი' },
-    { number: 100, suffix: '%', label: 'კმაყოფილი კლიენტები' }
+    { number: 30, suffix: '%', label: t.hero.stats.cheaper },
+    { number: 11, suffix: '+', label: t.hero.stats.completed },
+    { number: 100, suffix: '%', label: t.hero.stats.satisfied }
   ]
 
   const services = [
     {
       icon: <FaFileAlt />,
-      name: 'Landing Page',
+      ...t.home.pricing.packages.landing,
+      description: t.home.pricing.packages.landing.desc,
       price: '400-700',
-      duration: '3-5 დღე',
-      description: 'იდეალური მცირე ბიზნესისთვის ან პროდუქტის წარმოსაჩენად',
-      features: [
-        '1-3 გვერდი თანამედროვე დიზაინით',
-        'სრულად რესპონსიული დიზაინი',
-        'კონტაქტის ფორმა',
-        'Google Maps ინტეგრაცია',
-        'სოციალური მედიის ლინკები',
-        'ძირითადი SEO ოპტიმიზაცია',
-      ],
-      notIncluded: [
-        'მონაცემთა ბაზა',
-        'მომხმარებლის ავტორიზაცია'
-      ],
+      duration: `3-5 ${t.home.pricing.duration}`,
       marketPrice: '1,000-2,000',
       color: 'from-blue-500 to-cyan-500',
       bgColor: 'bg-blue-50 dark:bg-blue-900/20'
     },
     {
       icon: <FaBriefcase />,
-      name: 'საიტი ბიზნესისთვის',
-      price: '1,000-დან',
-      duration: '7-10 დღე',
-      description: 'სრული ფუნქციონალის საიტი ბიზნესისთვის',
-      features: [
-        '3-7 გვერდი პროფესიონალური დიზაინით',
-        'სრულად რესპონსიული',
-        'კონტენტის მართვის სისტემა (CMS)',
-        'ბლოგის სექცია',
-        'მრავალენოვანი მხარდაჭერა',
-        'სრული SEO ოპტიმიზაცია',
-        'სოციალური მედიის ინტეგრაცია',
-      ],
-      notIncluded: [
-        'ონლაინ გადახდის სისტემა',
-      ],
+      ...t.home.pricing.packages.business,
+      description: t.home.pricing.packages.business.desc,
+      price: '1,000+',
+      duration: `7-10 ${t.home.pricing.duration}`,
       marketPrice: '2,000-4,000',
       popular: true,
       color: 'from-primary-500 to-primary-600',
@@ -183,48 +161,17 @@ const ClientHome = () => {
     },
     {
       icon: <FaShoppingCart />,
-      name: 'E-Commerce',
-      price: '3,000-დან',
-      duration: '14-21 დღე',
-      description: 'სრული ფუნქციონალის ონლაინ მაღაზია',
-      features: [
-        'უსასრულო პროდუქტების დამატება',
-        'პროდუქტის ძიება და ფილტრაცია',
-        'კალათა და Checkout',
-        'შეკვეთების მართვა',
-        'გადახდის სისტემების ინტეგრაცია',
-        'ადმინ პანელი',
-        'ანალიტიკა და რეპორტები',
-      ],
-      notIncluded: [],
+      ...t.home.pricing.packages.ecommerce,
+      description: t.home.pricing.packages.ecommerce.desc,
+      price: '3,000+',
+      duration: `14-21 ${t.home.pricing.duration}`,
       marketPrice: '4,000-6,000+',
       color: 'from-purple-500 to-pink-500',
       bgColor: 'bg-purple-50 dark:bg-purple-900/20'
     },
   ]
 
-  const faqs = [
-    {
-      q: 'რამდენი დრო სჭირდება საიტის დამზადებას?',
-      a: 'სტანდარტული „საიტის დამზადება“ (Landing ან მცირე ბიზნესი) სრულდება 3-7 დღეში (შეიძლება უფრო სწრაფადაც.). უფრო მასშტაბური „ვებგვერდების დამზადება“ შეიძლება გაგრძელდეს 2-3 კვირა, მოთხოვნებიდან გამომდინარე.'
-    },
-    {
-      q: 'რა ღირს საიტის გაკეთება?',
-      a: '„საიტების დამზადება“ იწყება 500-700 ₾-დან (Landing), ბიზნეს საიტები 1,000-2,500 ₾, ხოლო E‑commerce 3,000-5,000 ₾+. ფასები დამოკიდებულია ფუნქციონალზე და დიზაინზე.'
-    },
-    {
-      q: 'შესაძლებელია საიტები იაფად?',
-      a: 'კი — PixelWeb გვთავაზობს საიტების დამზადებას ხელმისაწვდომ ფასად ხარისხის დაკარგვის გარეშე.'
-    },
-    {
-      q: 'შესაძლებელია „საიტები სწრაფად“?',
-      a: 'დიახ. ვთავაზობთ დაჩქარებულ მიწოდებას — მცირე პროექტები მზად არის 3-5 დღეში. ასევე გვაქვს მკაფიო და მკაცრი გრაფიკი.'
-    },
-    {
-      q: 'შედის თუ არა SEO ოპტიმიზაცია?',
-      a: 'ძირითად SEO-ს ვაკეთებთ სტანდარტულად: სუფთა კოდი, სწრაფი ჩატვირთვა, სათაურები/აღწერები, სტრუქტურული მონაცემები. სურვილის შემთხვევაში ვამატებთ გაფართოებულ SEO‑ს და კონტენტის გეგმას.'
-    }
-  ]
+  const faqs = t.home.faq.questions
 
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
@@ -366,8 +313,8 @@ const ClientHome = () => {
 
                 {/* Mobile Hero */}
                 <div className="px-2 text-center flex-1">
-                  <div className="text-[10px] font-black text-gray-900 dark:text-white leading-[1.1] mb-0.5 tracking-tight">პროფესიონალური ვებსაიტები</div>
-                  <div className="text-[10px] font-black text-primary-600 leading-[1.1] mb-3 tracking-tight">ხელმისაწვდომ ფასად</div>
+                  <div className="text-[10px] font-black text-gray-900 dark:text-white leading-[1.1] mb-0.5 tracking-tight">{t.services.hero.badge}</div>
+                  <div className="text-[10px] font-black text-primary-600 leading-[1.1] mb-3 tracking-tight">{t.hero.stats.cheaper}</div>
 
                   {/* Visual Content Placeholder */}
                   <div className="mx-auto w-[90%] h-14 bg-gradient-to-br from-primary-50 to-indigo-50 dark:from-gray-800 dark:to-primary-900/20 rounded-xl border border-primary-100/50 dark:border-primary-800/50 mb-3 flex items-center justify-center overflow-hidden">
@@ -378,21 +325,21 @@ const ClientHome = () => {
                   <div className="grid grid-cols-2 gap-1 mb-3 px-1">
                     <div className="bg-gray-50 dark:bg-gray-800/50 p-1.5 rounded-lg border border-gray-100 dark:border-gray-800">
                       <div className="text-[9px] font-black text-primary-600">30%</div>
-                      <div className="text-[4.5px] text-gray-400 uppercase font-bold tracking-tighter">იაფი ფასი</div>
+                      <div className="text-[4.5px] text-gray-400 uppercase font-bold tracking-tighter">{t.hero.stats.cheaper}</div>
                     </div>
                     <div className="bg-gray-50 dark:bg-gray-800/50 p-1.5 rounded-lg border border-gray-100 dark:border-gray-800">
                       <div className="text-[9px] font-black text-primary-600">11+</div>
-                      <div className="text-[4.5px] text-gray-400 uppercase font-bold tracking-tighter">პროექტი</div>
+                      <div className="text-[4.5px] text-gray-400 uppercase font-bold tracking-tighter">{t.hero.stats.completed}</div>
                     </div>
                   </div>
 
                   {/* Action Buttons */}
                   <div className="space-y-1 px-1">
                     <div className="bg-primary-600 h-4 w-full rounded-md flex items-center justify-center shadow-sm shadow-primary-600/20">
-                      <span className="text-[5px] text-white font-black uppercase tracking-wider">სერვისები →</span>
+                      <span className="text-[5px] text-white font-black uppercase tracking-wider">{t.nav.services} →</span>
                     </div>
                     <div className="border border-primary-600 h-4 w-full rounded-md flex items-center justify-center">
-                      <span className="text-[5px] text-primary-600 font-black uppercase tracking-wider">პორტფოლიო</span>
+                      <span className="text-[5px] text-primary-600 font-black uppercase tracking-wider">{t.nav.portfolio}</span>
                     </div>
                   </div>
                 </div>
@@ -403,7 +350,7 @@ const ClientHome = () => {
                     <span className="text-[5px] text-white font-black">WhatsApp</span>
                   </div>
                   <div className="flex-1 bg-primary-600 h-5 rounded-lg flex items-center justify-center gap-1 shadow-sm shadow-primary-600/20">
-                    <span className="text-[5px] text-white font-black">დარეკვა</span>
+                    <span className="text-[5px] text-white font-black">{t.nav.contact}</span>
                   </div>
                 </div>
               </div>
@@ -453,24 +400,24 @@ const ClientHome = () => {
                     <div className="flex items-center justify-between mb-4">
                       <div className="text-[11px] font-black text-primary-600 tracking-tighter">PixelWeb</div>
                       <div className="flex gap-2 text-[6px] font-bold text-gray-400">
-                        <span>მთავარი</span>
-                        <span>სერვისები</span>
-                        <span>პორტფოლიო</span>
+                        <span>{t.nav.home}</span>
+                        <span>{t.nav.services}</span>
+                        <span>{t.nav.portfolio}</span>
                       </div>
                     </div>
 
                     {/* Hero Section */}
                     <div className="text-center mt-4">
-                      <div className="text-[11px] font-black text-gray-900 dark:text-white leading-tight">პროფესიონალური ვებსაიტები</div>
-                      <div className="text-[11px] font-black text-primary-600 mb-3">ხელმისაწვდომ ფასად</div>
+                      <div className="text-[11px] font-black text-gray-900 dark:text-white leading-tight">{t.services.hero.badge}</div>
+                      <div className="text-[11px] font-black text-primary-600 mb-3">{t.hero.stats.cheaper}</div>
 
                       {/* Real Buttons */}
                       <div className="flex gap-2 justify-center mt-4">
                         <div className="bg-primary-600 h-4 px-3 rounded-md flex items-center shadow-sm shadow-primary-600/20">
-                          <span className="text-[5px] text-white font-black uppercase tracking-wider">იხილეთ სერვისები</span>
+                          <span className="text-[5px] text-white font-black uppercase tracking-wider">{t.home.pricing.viewAll}</span>
                         </div>
                         <div className="border border-primary-600 h-4 px-3 rounded-md flex items-center">
-                          <span className="text-[5px] text-primary-600 font-black uppercase tracking-wider">ნახეთ პორტფოლიო</span>
+                          <span className="text-[5px] text-primary-600 font-black uppercase tracking-wider">{t.services.hero.portfolio}</span>
                         </div>
                       </div>
                     </div>
@@ -503,25 +450,25 @@ const ClientHome = () => {
               className="text-center max-w-4xl mx-auto"
             >
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
-                პროფესიონალური ვებსაიტები
-                <span className="block text-primary-600 dark:text-primary-400 mt-2">ხელმისაწვდომ ფასად</span>
+                {t.hero.title}
+                <span className="block text-primary-600 dark:text-primary-400 mt-2">{t.hero.titleHighlight}</span>
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
-                ჩვენ ვქმნით თანამედროვე, სწრაფ და ხარისხიან ვებსაიტებს საქართველოში, ბაზრის ფასებზე 30%-მდე იაფად.
+                {t.hero.subtitle}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
                 <Link
                   href="/services"
                   className="bg-primary-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-primary-700 transition-all hover:shadow-xl transform hover:-translate-y-1 font-semibold text-base sm:text-lg inline-flex items-center justify-center"
                 >
-                  იხილეთ სერვისები
+                  {t.home.pricing.viewAll}
                   <FaArrowRight className="ml-2" />
                 </Link>
                 <Link
                   href="/portfolio"
                   className="bg-white text-primary-600 border-2 border-primary-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-primary-50 transition-all hover:shadow-xl transform hover:-translate-y-1 font-semibold text-base sm:text-lg"
                 >
-                  ნახეთ პორტფოლიო
+                  {t.services.hero.portfolio}
                 </Link>
               </div>
             </motion.div>
@@ -555,13 +502,13 @@ const ClientHome = () => {
               className="text-center mb-8 sm:mb-12 md:mb-16"
             >
               <span className="inline-block px-4 py-1.5 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium mb-4">
-                რატომ ჩვენ?
+                {t.home.features.badge}
               </span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
-                რატომ უნდა ავირჩიოთ PixelWeb?
+                {t.home.features.title}
               </h2>
               <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                ჩვენ გთავაზობთ საუკეთესო ხარისხს ხელმისაწვდომ ფასად საქართველოში
+                {t.home.features.subtitle}
               </p>
             </motion.div>
 
@@ -616,14 +563,14 @@ const ClientHome = () => {
               className="text-center mb-12 sm:mb-16"
             >
               <span className="inline-block px-4 py-1.5 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium mb-4">
-                💰 გამჭვირვალე ფასები
+                {t.home.pricing.badge}
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                აირჩიეთ თქვენთვის შესაფერისი
-                <span className="text-primary-600 dark:text-primary-400"> პაკეტი</span>
+                {t.home.pricing.title}
+                <span className="text-primary-600 dark:text-primary-400"> {t.home.pricing.titleHighlight}</span>
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                მარტივი და ოპტიმალური ფასები. ყველა პაკეტი მოიცავს უფასო ტექნიკურ მხარდაჭერას.
+                {t.home.pricing.subtitle}
               </p>
             </motion.div>
 
@@ -644,7 +591,7 @@ const ClientHome = () => {
                 href="/services"
                 className="inline-flex items-center gap-2 text-primary-600 dark:text-primary-400 font-semibold text-lg hover:text-primary-700 dark:hover:text-primary-300 group"
               >
-                იხილეთ ყველა სერვისი
+                {t.home.pricing.viewAll}
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
@@ -656,10 +603,10 @@ const ClientHome = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 sm:mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
-                ხშირად დასმული კითხვები (FAQ)
+                {t.home.faq.title}
               </h2>
               <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300">
-                ყველაფერი ვებგვერდების დამზადების შესახებ
+                {t.home.faq.subtitle}
               </p>
             </div>
             <div className="max-w-4xl mx-auto divide-y divide-gray-200 dark:divide-gray-800 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden bg-white dark:bg-gray-900 shadow-lg">
@@ -704,7 +651,7 @@ const ClientHome = () => {
             </div>
             <div className="text-center pt-8">
               <a href="/contact" className="inline-block bg-primary-600 text-white px-8 py-4 rounded-lg hover:bg-primary-700 transition-all font-semibold">
-                დაგვიკავშირდით ფასისა და ვადების მისაღებად
+                {t.home.cta.button}
               </a>
             </div>
           </div>
@@ -744,10 +691,10 @@ const ClientHome = () => {
               </motion.div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-                მზად ხართ დასაწყებად?
+                {t.home.cta.title}
               </h2>
               <p className="text-lg sm:text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-                დაგვიკავშირდით დღესვე და მიიღეთ უფასო კონსულტაცია თქვენი პროექტის შესახებ
+                {t.home.cta.subtitle}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -760,7 +707,7 @@ const ClientHome = () => {
                   }}
                   className="group bg-white text-primary-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-gray-100 transition-all hover:shadow-xl hover:shadow-white/20 transform hover:-translate-y-1 font-semibold text-base sm:text-lg inline-flex items-center justify-center gap-2"
                 >
-                  დაგვიკავშირდით
+                  {t.home.cta.button}
                   <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a

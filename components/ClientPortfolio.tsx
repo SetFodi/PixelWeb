@@ -5,8 +5,10 @@ import { motion } from 'framer-motion'
 import ImageSlider from '@/components/ImageSlider'
 import ProjectModal from '@/components/ProjectModal'
 import PageTransition from '@/components/PageTransition'
+import { useLanguage } from '@/context/LanguageContext'
 
 const ClientPortfolio = () => {
+  const { t, language } = useLanguage()
   const [filter, setFilter] = useState('all')
   const [selectedProject, setSelectedProject] = useState<any>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -14,109 +16,109 @@ const ClientPortfolio = () => {
   const projects = [
     {
       id: 11,
-      title: 'DecoConcept - საღებავებისა და მოსაპირკეთებელი მასალების მაღაზია',
+      title: { ka: 'DecoConcept - საღებავებისა და მოსაპირკეთებელი მასალების მაღაზია', en: 'DecoConcept - Paint & Finishing Materials Store' },
       category: 'ecommerce',
       images: ['/images/decoconcept1.png', '/images/decoconcept2.png', '/images/decoconcept3.png'],
-      description: 'საღებავებისა და მოსაპირკეთებელი მასალების პრემიუმ მაღაზიის ვებსაიტი საქართველოში.',
+      description: { ka: 'საღებავებისა და მოსაპირკეთებელი მასალების პრემიუმ მაღაზიის ვებსაიტი საქართველოში.', en: 'Premium paint and finishing materials store website in Georgia.' },
       technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'TypeScript'],
-      features: ['პროდუქციის კატალოგი', 'თანამედროვე დიზაინი', 'სრულიად რესპონსიული', 'SEO ოპტიმიზაცია'],
+      features: { ka: ['პროდუქციის კატალოგი', 'თანამედროვე დიზაინი', 'სრულიად რესპონსიული', 'SEO ოპტიმიზაცია'], en: ['Product Catalog', 'Modern Design', 'Fully Responsive', 'SEO Optimized'] },
       liveUrl: 'https://decoconcept.ge'
     },
     {
       id: 1,
-      title: 'AndCook - რეცეპტების აპლიკაცია',
+      title: { ka: 'AndCook - რეცეპტების აპლიკაცია', en: 'AndCook - Recipe App' },
       category: 'mobile',
       images: ['/images/AndCook.jpg', '/images/AndCook2.jpg'],
-      description: 'თანამედროვე მობილური აპლიკაცია კულინარიული რეცეპტების აღმოსაჩენად და გაზიარებისთვის',
+      description: { ka: 'თანამედროვე მობილური აპლიკაცია კულინარიული რეცეპტების აღმოსაჩენად და გაზიარებისთვის', en: 'Modern mobile app for discovering and sharing culinary recipes' },
       technologies: ['React Native', 'Firebase', 'Node.js'],
-      features: ['რეცეპტების ბაზა', 'ძიების ფუნქცია', 'სოციალური ფუნქციები', 'ოფლაინ რეჟიმი'],
+      features: { ka: ['რეცეპტების ბაზა', 'ძიების ფუნქცია', 'სოციალური ფუნქციები', 'ოფლაინ რეჟიმი'], en: ['Recipe Database', 'Search Function', 'Social Features', 'Offline Mode'] },
       liveUrl: 'https://andcook.vercel.app'
     },
     {
       id: 2,
-      title: 'AndScore - სპორტული აპლიკაცია',
+      title: { ka: 'AndScore - სპორტული აპლიკაცია', en: 'AndScore - Sports App' },
       category: 'mobile',
       images: ['/images/AndScore.jpg', '/images/AndScore2.jpg'],
-      description: 'ფუნქციური სპორტული აპლიკაცია ლაივ სქორების და სტატისტიკის თვალთვალისთვის',
+      description: { ka: 'ფუნქციური სპორტული აპლიკაცია ლაივ სქორების და სტატისტიკის თვალთვალისთვის', en: 'Functional sports app for live scores and statistics tracking' },
       technologies: ['React Native', 'REST API', 'Redux'],
-      features: ['ლაივ სქორები', 'სტატისტიკა', 'შეტყობინებები', 'ფავორიტების სისტემა'],
+      features: { ka: ['ლაივ სქორები', 'სტატისტიკა', 'შეტყობინებები', 'ფავორიტების სისტემა'], en: ['Live Scores', 'Statistics', 'Notifications', 'Favorites System'] },
       liveUrl: 'https://andscore.site'
     },
     {
       id: 3,
-      title: 'AndCode - საგანმანათლებო პლატფორმა',
+      title: { ka: 'AndCode - საგანმანათლებო პლატფორმა', en: 'AndCode - Educational Platform' },
       category: 'education',
       images: ['/images/andcode.jpg', '/images/andcode2.jpg'],
-      description: 'ინტერაქტიული საგანმანათლებო პლატფორმა პროგრამირების შესასწავლად',
+      description: { ka: 'ინტერაქტიული საგანმანათლებო პლატფორმა პროგრამირების შესასწავლად', en: 'Interactive educational platform for learning programming' },
       technologies: ['Next.js', 'TypeScript', 'MongoDB'],
-      features: ['ვიდეო გაკვეთილები', 'კოდის რედაქტორი', 'ტესტები', 'სერტიფიკატები'],
+      features: { ka: ['ვიდეო გაკვეთილები', 'კოდის რედაქტორი', 'ტესტები', 'სერტიფიკატები'], en: ['Video Lessons', 'Code Editor', 'Tests', 'Certificates'] },
       liveUrl: 'https://andcode.vercel.app'
     },
     {
       id: 4,
-      title: 'AndWatch - ფილმების, სერიალების და ანიმეების ტრეკინგი',
+      title: { ka: 'AndWatch - ფილმების, სერიალების და ანიმეების ტრეკინგი', en: 'AndWatch - Movies, Series & Anime Tracking' },
       category: 'mobile',
       images: ['/images/andwatch.jpg', '/images/Andwatch2.jpg'],
-      description: 'ფილმების, სერიალების, ანიმაციური ფილმებისა და ანიმეების ტრეკინგი, API',
+      description: { ka: 'ფილმების, სერიალების, ანიმაციური ფილმებისა და ანიმეების ტრეკინგი, API', en: 'Movies, series, animated films and anime tracking with API' },
       technologies: ['React & Next.Js', 'TMDB, MyAnimeList API', 'MongoDB'],
-      features: ['ტრეკინგი', 'შეფასება', 'პროფილში შენახვა', 'ინფორმაციის გაგება'],
+      features: { ka: ['ტრეკინგი', 'შეფასება', 'პროფილში შენახვა', 'ინფორმაციის გაგება'], en: ['Tracking', 'Rating', 'Profile Saving', 'Information Access'] },
       liveUrl: 'https://andwatch.vercel.app'
     },
     {
       id: 5,
-      title: 'TypingY - ტექსტის სისწრაფის (MonkeyType და ა.შ)',
+      title: { ka: 'TypingY - ტექსტის სისწრაფის (MonkeyType და ა.შ)', en: 'TypingY - Typing Speed Test (MonkeyType style)' },
       category: 'education',
       images: ['/images/TypingY.png'],
-      description: 'საგანმანათლებო ვებ აპლიკაცია ბეჭდვის სისწრაფისა და სიზუსტის გასაუმჯობესებლად',
+      description: { ka: 'საგანმანათლებო ვებ აპლიკაცია ბეჭდვის სისწრაფისა და სიზუსტის გასაუმჯობესებლად', en: 'Educational web app for improving typing speed and accuracy' },
       technologies: ['React', 'TypeScript', 'Tailwind CSS'],
-      features: ['სავარჯიშოები', 'სტატისტიკა', 'რეიტინგი', 'მრავალენოვანი'],
+      features: { ka: ['სავარჯიშოები', 'სტატისტიკა', 'რეიტინგი', 'მრავალენოვანი'], en: ['Exercises', 'Statistics', 'Leaderboard', 'Multilingual'] },
       liveUrl: 'https://typingy.live'
     },
     {
       id: 6,
-      title: 'Furniture Store - ავეჯის ონლაინ მაღაზია',
+      title: { ka: 'Furniture Store - ავეჯის ონლაინ მაღაზია', en: 'Furniture Store - Online Furniture Shop' },
       category: 'ecommerce',
       images: ['/images/Furniture1.jpg', '/images/Furniture2.jpg', '/images/Furniture3.jpg'],
-      description: 'თანამედროვე E-commerce პლატფორმა ავეჯის გაყიდვისთვის',
+      description: { ka: 'თანამედროვე E-commerce პლატფორმა ავეჯის გაყიდვისთვის', en: 'Modern E-commerce platform for furniture sales' },
       technologies: ['Next.js', 'Stripe', 'PostgreSQL'],
-      features: ['პროდუქტების კატალოგი', 'გადახდის სისტემა', '3D პრევიუ', 'ინვენტარის მართვა']
+      features: { ka: ['პროდუქტების კატალოგი', 'გადახდის სისტემა', '3D პრევიუ', 'ინვენტარის მართვა'], en: ['Product Catalog', 'Payment System', '3D Preview', 'Inventory Management'] }
     },
     {
       id: 7,
-      title: 'Restaurant Website - რესტორნის ვებსაიტი',
+      title: { ka: 'Restaurant Website - რესტორნის ვებსაიტი', en: 'Restaurant Website' },
       category: 'restaurant',
       images: ['/images/Restauran1.jpg', '/images/Restauran2.jpg'],
-      description: 'ელეგანტური ვებსაიტი რესტორნისთვის თანამედროვე დიზაინით და ფუნქციონალით',
+      description: { ka: 'ელეგანტური ვებსაიტი რესტორნისთვის თანამედროვე დიზაინით და ფუნქციონალით', en: 'Elegant restaurant website with modern design and functionality' },
       technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
-      features: ['მენიუს გალერეა', 'დაჯავშნის სისტემა', 'რესპონსიული დიზაინი', 'ფოტო გალერეა']
+      features: { ka: ['მენიუს გალერეა', 'დაჯავშნის სისტემა', 'რესპონსიული დიზაინი', 'ფოტო გალერეა'], en: ['Menu Gallery', 'Reservation System', 'Responsive Design', 'Photo Gallery'] }
     },
     {
       id: 8,
-      title: 'FIB Unit - GTA 5 RP Server',
+      title: { ka: 'FIB Unit - GTA 5 RP Server', en: 'FIB Unit - GTA 5 RP Server' },
       category: 'gaming',
       images: ['/images/FIB.jpg', '/images/FIB2.jpg'],
-      description: 'ვებსაიტი GTA 5 Roleplay სერვერისთვის - რეკრუტმენტის და ინფორმაციის სისტემით',
+      description: { ka: 'ვებსაიტი GTA 5 Roleplay სერვერისთვის - რეკრუტმენტის და ინფორმაციის სისტემით', en: 'Website for GTA 5 Roleplay server - with recruitment and info system' },
       technologies: ['Next.js', 'React', 'Tailwind CSS', 'Discord Integration'],
-      features: ['სერვერის ინფორმაცია', 'რეკრუტმენტის სისტემა', 'Discord ინტეგრაცია', 'თამაშის წესები'],
+      features: { ka: ['სერვერის ინფორმაცია', 'რეკრუტმენტის სისტემა', 'Discord ინტეგრაცია', 'თამაშის წესები'], en: ['Server Info', 'Recruitment System', 'Discord Integration', 'Game Rules'] },
       liveUrl: 'https://fib-unit-rp.vercel.app'
     },
     {
       id: 9,
-      title: 'CaseDelight - მოდერნ თემატიკის რესტორანი',
+      title: { ka: 'CaseDelight - მოდერნ თემატიკის რესტორანი', en: 'CaseDelight - Modern Theme Restaurant' },
       category: 'restaurant',
       images: ['/images/casedelight.jpg', '/images/casedelight2.jpg', '/images/casedelight3.jpg', '/images/casedelight4.jpg', '/images/casedelight5.jpg'],
-      description: 'თანამედროვე რესტორნის ვებსაიტი.',
+      description: { ka: 'თანამედროვე რესტორნის ვებსაიტი.', en: 'Modern restaurant website.' },
       technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
-      features: ['პროდუქტების კატალოგი', 'მობილურზე ოპტიმიზაცია', 'სწრაფი ჩატვირთვა']
+      features: { ka: ['პროდუქტების კატალოგი', 'მობილურზე ოპტიმიზაცია', 'სწრაფი ჩატვირთვა'], en: ['Product Catalog', 'Mobile Optimized', 'Fast Loading'] }
     },
     {
       id: 10,
-      title: 'Demo Ecommerce Website - E-commerce პლატფორმა (ტექნიკის მაღაზია)',
+      title: { ka: 'Demo Ecommerce Website - E-commerce პლატფორმა (ტექნიკის მაღაზია)', en: 'Demo Ecommerce Website - E-commerce Platform (Tech Store)' },
       category: 'ecommerce',
       images: ['/images/ecom1.png', '/images/ecom2.png', '/images/ecom3.png'],
-      description: 'თანამედროვე E-commerce პლატფორმა ტექნიკის მაღაზიისთვის',
+      description: { ka: 'თანამედროვე E-commerce პლატფორმა ტექნიკის მაღაზიისთვის', en: 'Modern E-commerce platform for tech store' },
       technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
-      features: ['პროდუქტების კატალოგი', 'მობილურზე ოპტიმიზაცია', 'სწრაფი ჩატვირთვა'],
+      features: { ka: ['პროდუქტების კატალოგი', 'მობილურზე ოპტიმიზაცია', 'სწრაფი ჩატვირთვა'], en: ['Product Catalog', 'Mobile Optimized', 'Fast Loading'] },
       liveUrl: 'https://ecomm-flax-ten.vercel.app/'
     }
   ]
@@ -127,13 +129,13 @@ const ClientPortfolio = () => {
   }
 
   const categories = [
-    { id: 'all', label: 'ყველა' },
-    { id: 'mobile', label: 'მობილური აპლიკაციები' },
-    { id: 'education', label: 'საგანმანათლებო' },
-    { id: 'ecommerce', label: 'E-Commerce' },
-    { id: 'restaurant', label: 'რესტორანი' },
-    { id: 'gaming', label: 'თამაშები' },
-    { id: 'portfolio', label: 'პორტფოლიო' }
+    { id: 'all', label: t.portfolio.categories.all },
+    { id: 'mobile', label: t.portfolio.categories.mobile },
+    { id: 'education', label: t.portfolio.categories.education },
+    { id: 'ecommerce', label: t.portfolio.categories.ecommerce },
+    { id: 'restaurant', label: t.portfolio.categories.restaurant },
+    { id: 'gaming', label: t.portfolio.categories.gaming },
+    { id: 'portfolio', label: t.portfolio.categories.portfolio }
   ]
 
   const filteredProjects = filter === 'all'
@@ -154,10 +156,10 @@ const ClientPortfolio = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
-                ჩვენი პროექტები
+                {t.portfolio.hero.title}
               </h1>
               <p className="text-base sm:text-lg lg:text-xl text-primary-100 dark:text-gray-300">
-                გაიგეთ მეტი ჩვენი პროექტების შესახებ.
+                {t.portfolio.hero.subtitle}
               </p>
             </motion.div>
           </div>
@@ -174,7 +176,7 @@ const ClientPortfolio = () => {
                 viewport={{ once: true }}
               >
                 <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-600 dark:text-primary-400 mb-1 sm:mb-2">11+</div>
-                <div className="text-xs sm:text-sm md:text-base text-gray-600">დასრულებული პროექტი</div>
+                <div className="text-xs sm:text-sm md:text-base text-gray-600">{t.portfolio.stats.projects}</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -183,7 +185,7 @@ const ClientPortfolio = () => {
                 viewport={{ once: true }}
               >
                 <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-600 dark:text-primary-400 mb-1 sm:mb-2">100%</div>
-                <div className="text-xs sm:text-sm md:text-base text-gray-600">წარმატების მაჩვენებელი</div>
+                <div className="text-xs sm:text-sm md:text-base text-gray-600">{t.portfolio.stats.success}</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -192,14 +194,14 @@ const ClientPortfolio = () => {
                 viewport={{ once: true }}
               >
                 <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-600 dark:text-primary-400 mb-1 sm:mb-2">24/7</div>
-                <div className="text-xs sm:text-sm md:text-base text-gray-600">მხარდაჭერა</div>
+                <div className="text-xs sm:text-sm md:text-base text-gray-600">{t.portfolio.stats.support}</div>
               </motion.div>
             </div>
           </div>
         </section>
 
         {/* Filter Section */}
-        <section className="py-4 sm:py-6 md:py-8 bg-transparent md:sticky md:top-20 z-40 transition-all duration-300">
+        <section className="py-4 sm:py-6 md:py-8 bg-transparent transition-all duration-300">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
               {categories.map((category) => (
@@ -233,11 +235,11 @@ const ClientPortfolio = () => {
                 >
                   {/* Image with Slider */}
                   <div className="relative h-48 sm:h-56 md:h-64 bg-gradient-to-br from-primary-100 to-primary-200 overflow-hidden">
-                    <ImageSlider images={project.images} alt={project.title} />
+                    <ImageSlider images={project.images} alt={project.title[language]} />
                     {/* View hint overlay */}
                     <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 z-20 pointer-events-none">
                       <div className="transform scale-0 group-hover:scale-100 transition-transform duration-300 text-white text-lg font-semibold">
-                        დააჭირე სანახავად
+                        {t.portfolio.clickToView}
                       </div>
                     </div>
                   </div>
@@ -245,16 +247,16 @@ const ClientPortfolio = () => {
                   {/* Content */}
                   <div className="p-5 sm:p-6">
                     <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2">
-                      {project.title}
+                      {project.title[language]}
                     </h3>
                     <p className="text-gray-600 mb-3 sm:mb-4 text-sm line-clamp-2">
-                      {project.description}
+                      {project.description[language]}
                     </p>
 
                     {/* Features */}
                     <div>
                       <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                        {project.features.slice(0, 3).map((feature, i) => (
+                        {project.features[language].slice(0, 3).map((feature: string, i: number) => (
                           <span key={i} className="text-xs text-gray-500 dark:text-gray-400 flex items-center">
                             <span className="text-green-500 dark:text-green-400 mr-1">✓</span> {feature}
                           </span>
@@ -268,7 +270,7 @@ const ClientPortfolio = () => {
 
             {filteredProjects.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">ამ კატეგორიაში პროექტები არ მოიძებნა</p>
+                <p className="text-gray-500 text-lg">{t.portfolio.noProjects}</p>
               </div>
             )}
           </div>
@@ -291,22 +293,22 @@ const ClientPortfolio = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-                მზად ხართ შექმნათ თქვენი საიტი?
+                {t.portfolio.cta.title}
               </h2>
               <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-                დაგვიკავშირდით და მიიღეთ უფასო კონსულტაცია
+                {t.portfolio.cta.subtitle}
               </p>
               <a
                 href="/contact"
                 className="inline-block bg-white text-primary-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition-all hover:shadow-xl transform hover:-translate-y-1 font-semibold text-lg"
               >
-                დაიწყეთ პროექტი
+                {t.portfolio.cta.button}
               </a>
             </motion.div>
           </div>
         </section>
       </div>
-    </PageTransition>
+    </PageTransition >
   )
 }
 

@@ -3,7 +3,6 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { ThemeProvider } from '@/components/ThemeProvider'
-import { SnowProvider } from '@/components/SnowProvider'
 import PageLoader from '@/components/PageLoader'
 import VisitorTracker from '@/components/VisitorTracker'
 import { Analytics } from '@vercel/analytics/react'
@@ -11,6 +10,7 @@ import ScrollToTopButton from '@/components/ScrollToTopButton'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import StickyContactBar from '@/components/StickyContactBar'
 import OnlineCounter from '@/components/OnlineCounter'
+import { LanguageProvider } from '@/context/LanguageContext'
 import { Suspense } from 'react'
 
 export const metadata: Metadata = {
@@ -249,7 +249,7 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <SnowProvider>
+          <LanguageProvider>
             <PageLoader />
             <VisitorTracker />
             <Navbar />
@@ -262,7 +262,7 @@ export default function RootLayout({
             <WhatsAppButton />
             <OnlineCounter />
             <Analytics />
-          </SnowProvider>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FaUsers } from 'react-icons/fa'
+import { useLanguage } from '@/context/LanguageContext'
 
 // Generate a unique visitor ID (stored in sessionStorage)
 const getVisitorId = () => {
@@ -17,6 +18,7 @@ const getVisitorId = () => {
 }
 
 const OnlineCounter = () => {
+    const { t } = useLanguage()
     const [online, setOnline] = useState<number | null>(null)
 
     useEffect(() => {
@@ -61,7 +63,7 @@ const OnlineCounter = () => {
             </span>
             <FaUsers className="text-gray-500 dark:text-gray-400 text-sm" />
             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                {online} ონლაინ
+                {online} {t.common.online}
             </span>
         </motion.div>
     )

@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaFacebook, FaInstagram, FaLinkedin, FaPaperPlane } from 'react-icons/fa'
 import PageTransition from '@/components/PageTransition'
+import { useLanguage } from '@/context/LanguageContext'
 
 declare global {
   interface Window {
@@ -12,6 +13,7 @@ declare global {
 }
 
 const ClientContact = () => {
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -85,39 +87,22 @@ const ClientContact = () => {
   const contactInfo = [
     {
       icon: <FaMapMarkerAlt className="text-3xl text-primary-600 dark:text-primary-400" />,
-      title: 'მისამართი',
-      info: 'თბილისი, საქართველო',
-      subInfo: 'დისტანციურად მივიღებთ შეკვეთებს მთელი საქართველოდან'
+      title: t.contact.info.address.title,
+      info: t.contact.info.address.value,
+      subInfo: t.contact.info.address.sub
     },
     {
       icon: <FaPhone className="text-3xl text-primary-600 dark:text-primary-400" />,
-      title: 'ტელეფონი',
-      info: '+995 591 410 914',
-      subInfo: 'ორშაბათი - პარასკევი: 10:00 - 21:00'
+      title: t.contact.info.phone.title,
+      info: t.contact.info.phone.value,
+      subInfo: t.contact.info.phone.sub
     },
     {
       icon: <FaEnvelope className="text-3xl text-primary-600 dark:text-primary-400" />,
-      title: 'ელ-ფოსტა',
-      info: 'pixelweb2026@gmail.com',
-      subInfo: 'პასუხს გიგზავნით მაქსიმალურად სწრაფად'
+      title: t.contact.info.email.title,
+      info: t.contact.info.email.value,
+      subInfo: t.contact.info.email.sub
     }
-  ]
-
-  const services = [
-    'Landing Page (500-700 ₾)',
-    'საწარმოს ვებსაიტი (1,000-2,500 ₾)',
-    'E-Commerce (3,000-5,000 ₾)',
-    'მორგებული ვებსაიტი (მოლაპარაკებით)',
-    'არ ვარ დარწმუნებული'
-  ]
-
-  const budgets = [
-    'აქამდე 1,000 ₾',
-    '1,000 - 2,000 ₾',
-    '2,000 - 3,000 ₾',
-    '3,000 - 5,000 ₾',
-    '5,000 ₾+',
-    'შეთანხმებით'
   ]
 
   return (
@@ -134,10 +119,10 @@ const ClientContact = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-                დაგვიკავშირდით
+                {t.contact.hero.title}
               </h1>
               <p className="text-xl text-primary-100 dark:text-gray-300">
-                მზად ვართ მოვისმინოთ თქვენი მოთხოვნა და დავგეგმოთ თქვენი ვებსაიტი. მიიღეთ უფასო კონსულტაცია.
+                {t.contact.hero.subtitle}
               </p>
             </motion.div>
           </div>
@@ -182,20 +167,20 @@ const ClientContact = () => {
                   className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-800"
                 >
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-                    გამოგვიგზავნეთ შეტყობინება
+                    {t.contact.form.title}
                   </h2>
 
                   {submitStatus === 'success' && (
                     <div className="mb-6 p-4 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700 rounded-lg text-green-700 dark:text-green-300 flex items-center">
                       <span className="text-2xl mr-3">✅</span>
-                      <span>თქვენი შეტყობინება წარმატებით გაიგზავნა! ჩვენ დაგიკავშირდებით მალე.</span>
+                      <span>{t.contact.form.success}</span>
                     </div>
                   )}
 
                   {submitStatus === 'error' && (
                     <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-700 rounded-lg text-red-700 dark:text-red-300 flex items-center">
                       <span className="text-2xl mr-3">❌</span>
-                      <span>დაფიქსირდა შეცდომა. გთხოვთ სცადოთ თავიდან ან დაგვიკავშირდით ტელეფონით.</span>
+                      <span>{t.contact.form.error}</span>
                     </div>
                   )}
 
@@ -203,7 +188,7 @@ const ClientContact = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                          სახელი და გვარი *
+                          {t.contact.form.name} *
                         </label>
                         <input
                           type="text"
@@ -213,13 +198,13 @@ const ClientContact = () => {
                           value={formData.name}
                           onChange={handleChange}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition text-gray-900 dark:text-white dark:bg-gray-800 dark:border-gray-600"
-                          placeholder="თქვენი სახელი"
+                          placeholder={t.contact.form.namePlaceholder}
                         />
                       </div>
 
                       <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                          ელ-ფოსტა *
+                          {t.contact.form.email} *
                         </label>
                         <input
                           type="email"
@@ -237,7 +222,7 @@ const ClientContact = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                          ტელეფონი *
+                          {t.contact.form.phone} *
                         </label>
                         <input
                           type="tel"
@@ -253,7 +238,7 @@ const ClientContact = () => {
 
                       <div>
                         <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                          კომპანია/ბიზნესი
+                          {t.contact.form.company}
                         </label>
                         <input
                           type="text"
@@ -262,7 +247,7 @@ const ClientContact = () => {
                           value={formData.company}
                           onChange={handleChange}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition text-gray-900 dark:text-white dark:bg-gray-800 dark:border-gray-600"
-                          placeholder="კომპანიის სახელი"
+                          placeholder={t.contact.form.companyPlaceholder}
                         />
                       </div>
                     </div>
@@ -270,7 +255,7 @@ const ClientContact = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label htmlFor="service" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                          რა სერვისი გაინტერესებთ? *
+                          {t.contact.form.service} *
                         </label>
                         <select
                           id="service"
@@ -280,8 +265,8 @@ const ClientContact = () => {
                           onChange={handleChange}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600"
                         >
-                          <option value="">აირჩიეთ სერვისი</option>
-                          {services.map((service, index) => (
+                          <option value="">{t.contact.form.selectService}</option>
+                          {t.contact.services.map((service: string, index: number) => (
                             <option key={index} value={service}>
                               {service}
                             </option>
@@ -291,7 +276,7 @@ const ClientContact = () => {
 
                       <div>
                         <label htmlFor="budget" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                          თქვენი ბიუჯეტი
+                          {t.contact.form.budget}
                         </label>
                         <select
                           id="budget"
@@ -300,8 +285,8 @@ const ClientContact = () => {
                           onChange={handleChange}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600"
                         >
-                          <option value="">აირჩიეთ ბიუჯეტი</option>
-                          {budgets.map((budget, index) => (
+                          <option value="">{t.contact.form.selectBudget}</option>
+                          {t.contact.budgets.map((budget: string, index: number) => (
                             <option key={index} value={budget}>
                               {budget}
                             </option>
@@ -312,7 +297,7 @@ const ClientContact = () => {
 
                     <div>
                       <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        შეტყობინება *
+                        {t.contact.form.message} *
                       </label>
                       <textarea
                         id="message"
@@ -322,7 +307,7 @@ const ClientContact = () => {
                         onChange={handleChange}
                         rows={6}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition resize-none text-gray-900 dark:text-white dark:bg-gray-800 dark:border-gray-600"
-                        placeholder="მოგვიყევით თქვენი პროექტის შესახებ..."
+                        placeholder={t.contact.form.messagePlaceholder}
                       />
                     </div>
 
@@ -334,11 +319,11 @@ const ClientContact = () => {
                       {isSubmitting ? (
                         <>
                           <span className="animate-spin mr-2">⏳</span>
-                          იგზავნება...
+                          {t.contact.form.submitting}
                         </>
                       ) : (
                         <>
-                          გაგზავნა
+                          {t.contact.form.submit}
                           <FaPaperPlane className="ml-2" />
                         </>
                       )}
@@ -358,45 +343,39 @@ const ClientContact = () => {
                 >
                   {/* Working Hours */}
                   <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-gray-800">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">სამუშაო საათები</h3>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{t.contact.hours.title}</h3>
                     <div className="space-y-3 text-gray-600 dark:text-gray-300">
                       <div className="flex justify-between">
-                        <span>ორშაბათი - პარასკევი</span>
+                        <span>{t.contact.hours.weekdays}</span>
                         <span className="font-semibold">09:00 - 21:00</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>შაბათი</span>
+                        <span>{t.contact.hours.saturday}</span>
                         <span className="font-semibold">11:00 - 19:00</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>კვირა</span>
-                        <span className="font-semibold text-red-500">დახურულია</span>
+                        <span>{t.contact.hours.sunday}</span>
+                        <span className="font-semibold text-red-500">{t.contact.hours.closed}</span>
                       </div>
                     </div>
                   </div>
 
                   {/* FAQ */}
                   <div className="bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-6 border border-primary-100 dark:border-gray-700">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">ხშირი კითხვები</h3>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{t.contact.faq.title}</h3>
                     <div className="space-y-4">
-                      <div>
-                        <h4 className="font-semibold text-gray-900 dark:text-gray-200 mb-1">რამდენი ხანი სჭირდება?</h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">Landing Page - 3-5 დღე, საწარმოს საიტი - 7-10 დღე, E-commerce - 14-21 დღე</p>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-900 dark:text-gray-200 mb-1">შევძლებ გადახდას ეტაპობრივად?</h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">დიახ, შესაძლებელია 50% წინასწარ და 50% გაშვებისას</p>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-900 dark:text-gray-200 mb-1">მოიცავს ჰოსტინგს?</h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">ჰოსტინგი და დომენი ცალკე სერვისია (ემატება ფასი), ჩვენ დაგეხმარებით მოწყობაში</p>
-                      </div>
+                      {t.contact.faq.items.map((item: { q: string; a: string }, index: number) => (
+                        <div key={index}>
+                          <h4 className="font-semibold text-gray-900 dark:text-gray-200 mb-1">{item.q}</h4>
+                          <p className="text-sm text-gray-600 dark:text-gray-300">{item.a}</p>
+                        </div>
+                      ))}
                     </div>
                   </div>
 
                   {/* Social Media */}
                   <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-gray-800">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">დაგვიკავშირდით</h3>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{t.contact.social}</h3>
                     <div className="flex space-x-4">
                       <a
                         href="#"
@@ -422,9 +401,9 @@ const ClientContact = () => {
                   {/* Response Time */}
                   <div className="bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-2xl p-6 text-center">
                     <div className="text-4xl mb-2">⚡</div>
-                    <h3 className="text-xl font-bold mb-2">სწრაფი პასუხი</h3>
+                    <h3 className="text-xl font-bold mb-2">{t.contact.fastResponse.title}</h3>
                     <p className="text-primary-100">
-                      პასუხს გიგზავნით მაქსიმალურად სწრაფად
+                      {t.contact.fastResponse.text}
                     </p>
                   </div>
                 </motion.div>
@@ -450,8 +429,8 @@ const ClientContact = () => {
             {/* Overlay with contact info */}
             <div className="absolute bottom-4 left-4 bg-white dark:bg-gray-800 rounded-xl shadow-xl p-4 max-w-xs">
               <h3 className="font-bold text-gray-900 dark:text-white mb-1">PixelWeb.ge</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">თბილისი, საქართველო</p>
-              <p className="text-sm text-primary-600 dark:text-primary-400">დისტანციურად ვმუშაობთ მთელი საქართველოს მასშტაბით</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">{t.contact.map.title}</p>
+              <p className="text-sm text-primary-600 dark:text-primary-400">{t.contact.map.text}</p>
             </div>
           </div>
         </section>
@@ -461,4 +440,3 @@ const ClientContact = () => {
 }
 
 export default ClientContact
-

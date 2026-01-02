@@ -5,6 +5,7 @@ import { FaCheck, FaTimes, FaRocket, FaShoppingCart, FaBriefcase, FaFileAlt, FaA
 import { motion } from 'framer-motion'
 import PageTransition from '@/components/PageTransition'
 import PricingCard from '@/components/PricingCard'
+import { useLanguage } from '@/context/LanguageContext'
 
 interface Service {
   icon: JSX.Element;
@@ -21,47 +22,25 @@ interface Service {
 }
 
 const ClientServices = () => {
+  const { t } = useLanguage()
+
   const services: Service[] = [
     {
       icon: <FaFileAlt />,
-      name: 'Landing Page',
+      ...t.home.pricing.packages.landing,
+      description: t.home.pricing.packages.landing.desc,
       price: '400-700',
-      duration: '3-5 დღე',
-      description: 'იდეალური მცირე ბიზნესისთვის ან პროდუქტის წარმოსაჩენად',
-      features: [
-        '1-3 გვერდი თანამედროვე დიზაინით',
-        'სრულად რესპონსიული დიზაინი',
-        'კონტაქტის ფორმა',
-        'Google Maps ინტეგრაცია',
-        'სოციალური მედიის ლინკები',
-        'ძირითადი SEO ოპტიმიზაცია',
-      ],
-      notIncluded: [
-        'მონაცემთა ბაზა',
-        'მომხმარებლის ავტორიზაცია'
-      ],
+      duration: `3-5 ${t.home.pricing.duration}`,
       marketPrice: '1,000-2,000',
       color: 'from-blue-500 to-cyan-500',
       bgColor: 'bg-blue-50 dark:bg-blue-900/20'
     },
     {
       icon: <FaBriefcase />,
-      name: 'საიტი ბიზნესისთვის',
-      price: '1,000-დან',
-      duration: '7-10 დღე',
-      description: 'სრული ფუნქციონალის საიტი ბიზნესისთვის',
-      features: [
-        '3-7 გვერდი პროფესიონალური დიზაინით',
-        'სრულად რესპონსიული',
-        'კონტენტის მართვის სისტემა (CMS)',
-        'ბლოგის სექცია',
-        'მრავალენოვანი მხარდაჭერა',
-        'სრული SEO ოპტიმიზაცია',
-        'სოციალური მედიის ინტეგრაცია',
-      ],
-      notIncluded: [
-        'ონლაინ გადახდის სისტემა',
-      ],
+      ...t.home.pricing.packages.business,
+      description: t.home.pricing.packages.business.desc,
+      price: '1,000+',
+      duration: `7-10 ${t.home.pricing.duration}`,
       marketPrice: '2,000-4,000',
       popular: true,
       color: 'from-primary-500 to-primary-600',
@@ -69,44 +48,35 @@ const ClientServices = () => {
     },
     {
       icon: <FaShoppingCart />,
-      name: 'E-Commerce',
-      price: '3,000-დან',
-      duration: '14-21 დღე',
-      description: 'სრული ფუნქციონალის ონლაინ მაღაზია',
-      features: [
-        'უსასრულო პროდუქტების დამატება',
-        'პროდუქტის ძიება და ფილტრაცია',
-        'კალათა და Checkout',
-        'შეკვეთების მართვა',
-        'გადახდის სისტემების ინტეგრაცია',
-        'ადმინ პანელი',
-        'ანალიტიკა და რეპორტები',
-      ],
-      notIncluded: [],
+      ...t.home.pricing.packages.ecommerce,
+      description: t.home.pricing.packages.ecommerce.desc,
+      price: '3,000+',
+      duration: `14-21 ${t.home.pricing.duration}`,
       marketPrice: '4,000-6,000+',
       color: 'from-purple-500 to-pink-500',
       bgColor: 'bg-purple-50 dark:bg-purple-900/20'
     },
   ]
 
+
   const additionalServices = [
     {
       icon: <FaGlobe className="text-2xl" />,
-      name: 'დომენის რეგისტრაცია',
-      price: '30-70 ₾/წელი',
-      description: '.ge, .com, .net დომენები'
+      name: t.services.additional.items.domain.name,
+      price: t.services.additional.items.domain.price,
+      description: t.services.additional.items.domain.desc
     },
     {
       icon: <FaServer className="text-2xl" />,
-      name: 'ჰოსტინგი',
-      price: '120-400 ₾/წელი',
-      description: 'სწრაფი და უსაფრთხო ჰოსტინგი'
+      name: t.services.additional.items.hosting.name,
+      price: t.services.additional.items.hosting.price,
+      description: t.services.additional.items.hosting.desc
     },
     {
       icon: <FaHeadset className="text-2xl" />,
-      name: 'ტექნიკური მხარდაჭერა',
-      price: 'შეთანხმებით',
-      description: 'განახლებები და მხარდაჭერა 24/7'
+      name: t.services.additional.items.support.name,
+      price: t.services.additional.items.support.price,
+      description: t.services.additional.items.support.desc
     }
   ]
 
@@ -114,38 +84,38 @@ const ClientServices = () => {
     {
       icon: <FaLightbulb />,
       step: '01',
-      title: 'კონსულტაცია',
-      description: 'უფასო კონსულტაცია თქვენი საჭიროებების გასარკვევად'
+      title: t.services.process.steps[1].title,
+      description: t.services.process.steps[1].desc
     },
     {
       icon: <FaPencilRuler />,
       step: '02',
-      title: 'დიზაინი',
-      description: 'უნიკალური დიზაინის შექმნა თქვენი ბრენდის შესაბამისად'
+      title: t.services.process.steps[2].title,
+      description: t.services.process.steps[2].desc
     },
     {
       icon: <FaCode />,
       step: '03',
-      title: 'დეველოპმენტი',
-      description: 'საიტის აგება უახლესი ტექნოლოგიების გამოყენებით'
+      title: t.services.process.steps[3].title,
+      description: t.services.process.steps[3].desc
     },
     {
       icon: <FaCogs />,
       step: '04',
-      title: 'ტესტირება',
-      description: 'სრული ტესტირება ყველა მოწყობილობაზე'
+      title: t.services.process.steps[4].title,
+      description: t.services.process.steps[4].desc
     },
     {
       icon: <FaCheckCircle />,
       step: '05',
-      title: 'გაშვება',
-      description: 'საიტის გაშვება და უფასო ტრენინგი'
+      title: t.services.process.steps[5].title,
+      description: t.services.process.steps[5].desc
     },
     {
       icon: <FaHeadset />,
       step: '06',
-      title: 'მხარდაჭერა',
-      description: 'უფასო ტექნიკური მხარდაჭერა'
+      title: t.services.process.steps[6].title,
+      description: t.services.process.steps[6].desc
     }
   ]
 
@@ -181,18 +151,18 @@ const ClientServices = () => {
                 transition={{ delay: 0.2 }}
                 className="inline-block px-4 py-2 bg-primary-100 dark:bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6 text-primary-700 dark:text-white border border-primary-200 dark:border-white/20"
               >
-                💼 პროფესიონალური სერვისები
+                {t.services.hero.badge}
               </motion.span>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
-                ჩვენი სერვისები და
+                {t.services.hero.title}
                 <span className="block mt-2 bg-gradient-to-r from-primary-600 via-primary-500 to-cyan-500 bg-clip-text text-transparent">
-                  გამჭვირვალე ფასები
+                  {t.services.hero.highlight}
                 </span>
               </h1>
 
               <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-                აირჩიეთ თქვენთვის შესაფერისი პაკეტი. ყველა პროექტი მოიცავს უფასო კონსულტაციას და ტექნიკურ მხარდაჭერას.
+                {t.services.hero.subtitle}
               </p>
 
               <div className="flex flex-wrap justify-center gap-4">
@@ -200,7 +170,7 @@ const ClientServices = () => {
                   href="/contact"
                   className="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-700 transition-all hover:scale-105"
                 >
-                  უფასო კონსულტაცია
+                  {t.services.hero.consultation}
                   <FaArrowRight />
                 </Link>
                 <Link
@@ -208,7 +178,7 @@ const ClientServices = () => {
                   className="inline-flex items-center gap-2 bg-white dark:bg-white/10 backdrop-blur-sm text-gray-800 dark:text-white px-6 py-3 rounded-xl font-semibold border border-gray-200 dark:border-white/20 hover:bg-gray-50 dark:hover:bg-white/20 transition-all"
                 >
                   <FaPlay className="text-sm" />
-                  ნახეთ პორტფოლიო
+                  {t.services.hero.portfolio}
                 </Link>
               </div>
             </motion.div>
@@ -221,9 +191,9 @@ const ClientServices = () => {
               className="grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto mt-16"
             >
               {[
-                { value: '30%', label: 'იაფი ბაზართან' },
-                { value: '3-21', label: 'დღე მიწოდება' },
-                { value: '100%', label: 'კმაყოფილება' }
+                { value: '30%', label: t.hero.stats.cheaper },
+                { value: '3-21', label: t.hero.stats.delivery },
+                { value: '100%', label: t.hero.stats.satisfaction }
               ].map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="text-2xl sm:text-3xl font-bold text-primary-600 dark:text-white">{stat.value}</div>
@@ -245,10 +215,10 @@ const ClientServices = () => {
               className="text-center mb-12 sm:mb-16"
             >
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                აირჩიეთ თქვენი პაკეტი
+                {t.services.title}
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                ყველა პაკეტი მოიცავს რესპონსიულ დიზაინს, SEO ოპტიმიზაციას და ტექნიკურ მხარდაჭერას
+                {t.services.subtitle}
               </p>
             </motion.div>
 
@@ -275,20 +245,20 @@ const ClientServices = () => {
                   <div className="text-center md:text-left">
                     <div className="inline-flex items-center gap-2 bg-primary-100 dark:bg-white/10 rounded-full px-4 py-1.5 mb-4">
                       <FaRocket className="text-primary-600 dark:text-primary-400" />
-                      <span className="text-sm text-primary-700 dark:text-white">მორგებული პროექტი</span>
+                      <span className="text-sm text-primary-700 dark:text-white">{t.services.custom.badge}</span>
                     </div>
                     <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                      გჭირდებათ უნიკალური ვებსაიტი?
+                      {t.services.custom.title}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400">
-                      შევქმნით სრულად მორგებულ ვებსაიტს თქვენი საჭიროებების მიხედვით
+                      {t.services.custom.desc}
                     </p>
                   </div>
                   <Link
                     href="/contact"
                     className="inline-flex items-center gap-2 bg-primary-600 dark:bg-white text-white dark:text-gray-900 px-6 py-3 rounded-xl font-semibold hover:bg-primary-700 dark:hover:bg-gray-100 transition-all hover:scale-105 whitespace-nowrap"
                   >
-                    ფასი შეთანხმებით
+                    {t.services.custom.button}
                     <FaArrowRight />
                   </Link>
                 </div>
@@ -308,10 +278,10 @@ const ClientServices = () => {
               className="text-center mb-12"
             >
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                დამატებითი სერვისები
+                {t.services.additional.title}
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300">
-                ყველაფერი რაც გჭირდებათ წარმატებული ვებსაიტისთვის
+                {t.services.additional.subtitle}
               </p>
             </motion.div>
 
@@ -349,10 +319,10 @@ const ClientServices = () => {
               className="text-center mb-16"
             >
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                როგორ ვმუშაობთ
+                {t.services.process.title}
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                მარტივი და გამჭვირვალე პროცესი დაწყებიდან გაშვებამდე
+                {t.services.process.subtitle}
               </p>
             </motion.div>
 
@@ -422,10 +392,10 @@ const ClientServices = () => {
               </motion.div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-                მზად ხართ დასაწყებად?
+                {t.home.cta.title}
               </h2>
               <p className="text-lg sm:text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-                მიიღეთ უფასო კონსულტაცია და პერსონალური შეთავაზება თქვენი პროექტისთვის
+                {t.home.cta.subtitle}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -433,7 +403,7 @@ const ClientServices = () => {
                   href="/contact"
                   className="group inline-flex items-center justify-center gap-2 bg-white text-primary-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all hover:shadow-xl hover:scale-105"
                 >
-                  დაგვიკავშირდით
+                  {t.home.cta.button}
                   <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a

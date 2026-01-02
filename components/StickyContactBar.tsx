@@ -1,12 +1,14 @@
 'use client'
 
 import { FaWhatsapp, FaPhone } from 'react-icons/fa'
+import { useLanguage } from '@/context/LanguageContext'
 
 const PHONE_E164 = '+995591410914'
 const WHATSAPP_INTL = '995591410914'
 
 const StickyContactBar = () => {
-  const waHref = `https://wa.me/${WHATSAPP_INTL}?text=${encodeURIComponent('გამარჯობა, მაინტერესებს ვებსაიტი PixelWeb.ge-ზე')}`
+  const { t } = useLanguage()
+  const waHref = `https://wa.me/${WHATSAPP_INTL}?text=${encodeURIComponent(t.footer.whatsappMessage)}`
   const callHref = `tel:${PHONE_E164}`
 
   return (
@@ -27,7 +29,7 @@ const StickyContactBar = () => {
             className="flex-1 inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2.5 rounded-lg transition-colors"
           >
             <FaPhone />
-            <span>დარეკვა</span>
+            <span>{t.footer.call}</span>
           </a>
         </div>
       </div>
