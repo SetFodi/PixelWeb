@@ -8,6 +8,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://pixelweb.ge/contact',
   },
+  openGraph: {
+    title: 'კონტაქტი | საიტის დამზადების უფასო კონსულტაცია',
+    description: 'მოგვწერეთ WhatsApp-ზე, დაგვირეკეთ ან შეავსეთ ფორმა. უფასო კონსულტაცია 24 საათში.',
+    url: 'https://pixelweb.ge/contact',
+    type: 'website',
+    locale: 'ka_GE',
+    siteName: 'PixelWeb.ge',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PixelWeb კონტაქტი',
+    description: 'WhatsApp, ზარი ან ფორმა — უფასო კონსულტაცია 24 საათში.',
+  },
 }
 
 export default function ContactPage() {

@@ -112,7 +112,7 @@ export const translations = {
                     },
                     {
                         q: 'რა ღირს საიტის გაკეთება?',
-                        a: 'ფასები იწყება 400 ლარიდან. Landing Page - 400-700₾, ბიზნეს საიტები 1000₾-დან, E-commerce 3000₾-დან.'
+                        a: 'ფასები იწყება 600 ლარიდან. Landing Page - 600-1,200₾, ბიზნეს საიტები 1,500₾-დან, E-commerce 4,000₾-დან. დეტალური პაკეტები სერვისების გვერდზე.'
                     },
                     {
                         q: 'მოყვება თუ არა საიტს გარანტია?',
@@ -251,13 +251,13 @@ export const translations = {
                 submitting: 'იგზავნება...'
             },
             services: [
-                'Landing Page (400-700 ₾)',
-                'საწარმოს ვებსაიტი (1,000-2,500 ₾)',
-                'E-Commerce (3,000-5,000 ₾)',
+                'Landing Page (600-1,200 ₾)',
+                'საწარმოს ვებსაიტი (1,500-3,500 ₾)',
+                'E-Commerce (4,000-8,000 ₾)',
                 'მორგებული ვებსაიტი (მოლაპარაკებით)',
                 'არ ვარ დარწმუნებული'
             ],
-            budgets: ['აქამდე 1,000 ₾', '1,000 - 2,000 ₾', '2,000 - 3,000 ₾', '3,000 - 5,000 ₾', '5,000 ₾+', 'შეთანხმებით'],
+            budgets: ['600 - 1,200 ₾', '1,200 - 2,500 ₾', '2,500 - 4,000 ₾', '4,000 - 6,000 ₾', '6,000 ₾+', 'შეთანხმებით'],
             hours: {
                 title: 'სამუშაო საათები',
                 weekdays: 'ორშაბათი - პარასკევი',
@@ -445,7 +445,7 @@ export const translations = {
                     },
                     {
                         q: 'How much does a website cost?',
-                        a: 'Prices start from 400 GEL. Landing Page - 400-700₾, Business Sites from 1000₾, E-commerce from 3000₾.'
+                        a: 'Prices start from 600 GEL. Landing Page - 600-1,200₾, Business Sites from 1,500₾, E-commerce from 4,000₾. See the services page for full packages.'
                     },
                     {
                         q: 'Does the website come with a warranty?',
@@ -584,13 +584,13 @@ export const translations = {
                 submitting: 'Sending...'
             },
             services: [
-                'Landing Page (400-700 ₾)',
-                'Business Website (1,000-2,500 ₾)',
-                'E-Commerce (3,000-5,000 ₾)',
+                'Landing Page (600-1,200 ₾)',
+                'Business Website (1,500-3,500 ₾)',
+                'E-Commerce (4,000-8,000 ₾)',
                 'Custom Website (negotiable)',
                 'Not sure yet'
             ],
-            budgets: ['Up to 1,000 ₾', '1,000 - 2,000 ₾', '2,000 - 3,000 ₾', '3,000 - 5,000 ₾', '5,000 ₾+', 'Negotiable'],
+            budgets: ['600 - 1,200 ₾', '1,200 - 2,500 ₾', '2,500 - 4,000 ₾', '4,000 - 6,000 ₾', '6,000 ₾+', 'Negotiable'],
             hours: {
                 title: 'Working Hours',
                 weekdays: 'Monday - Friday',

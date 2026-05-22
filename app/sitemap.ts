@@ -51,6 +51,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogPosts: MetadataRoute.Sitemap = [
     'ratom-mchirdeba-website',
     'ra-ghirs-saitis-damzadeba',
+    'wordpress-vs-custom-code',
+    'seo-safudzvlebi-qartuli-biznesisthvis',
+    'restornisthvis-saiti-ra-unda-hkondes',
+    'landing-page-tu-biznes-saiti',
+    'saiti-mcire-biznesisthvis-5-nabiji',
   ].map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
     lastModified: new Date(),

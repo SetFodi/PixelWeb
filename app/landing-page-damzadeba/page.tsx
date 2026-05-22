@@ -19,6 +19,11 @@ export const metadata: Metadata = {
     locale: 'ka_GE',
     siteName: 'PixelWeb.ge',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: page.metaTitle,
+    description: page.description,
+  },
 }
 
 export default function LandingPageDamzadebaPage() {

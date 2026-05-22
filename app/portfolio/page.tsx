@@ -8,6 +8,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://pixelweb.ge/portfolio',
   },
+  openGraph: {
+    title: 'პორტფოლიო | შესრულებული პროექტები — PixelWeb',
+    description: 'ჩვენი შესრულებული პროექტები: ვებსაიტები, მობილური აპლიკაციები და ელექტრონული კომერცია.',
+    url: 'https://pixelweb.ge/portfolio',
+    type: 'website',
+    locale: 'ka_GE',
+    siteName: 'PixelWeb.ge',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PixelWeb პორტფოლიო',
+    description: 'ჩვენი შესრულებული პროექტები — ვებსაიტები და ელექტრონული კომერცია.',
+  },
 }
 
 export default function PortfolioPage() {

@@ -8,6 +8,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://pixelweb.ge/about',
   },
+  openGraph: {
+    title: 'ჩვენ შესახებ | PixelWeb — საიტების დამზადება საქართველოში',
+    description: 'გაიცანით PixelWeb-ის გუნდი. ვქმნით ხარისხიან ვებსაიტებს ხელმისაწვდომ ფასად საქართველოში.',
+    url: 'https://pixelweb.ge/about',
+    type: 'website',
+    locale: 'ka_GE',
+    siteName: 'PixelWeb.ge',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ჩვენ შესახებ — PixelWeb',
+    description: 'ვქმნით ხარისხიან ვებსაიტებს ხელმისაწვდომ ფასად საქართველოში.',
+  },
 }
 
 export default function AboutPage() {

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import SeoServiceLandingPage from '@/components/SeoServiceLandingPage'
 import { baseUrl, seoServicePages } from '@/constants/seoServices'
 
-const page = seoServicePages['saitis-damzadeba-fasi']
+const page = seoServicePages['mcire-biznesis-saiti']
 
 export const metadata: Metadata = {
   title: page.metaTitle,
@@ -26,7 +26,6 @@ export const metadata: Metadata = {
   },
 }
 
-export default function SaitisDamzadebaFasiPage() {
+export default function McireBiznesisSaitiPage() {
   return <SeoServiceLandingPage page={page} />
 }
-

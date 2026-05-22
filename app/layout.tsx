@@ -14,13 +14,13 @@ import { LanguageProvider } from '@/context/LanguageContext'
 import { Suspense } from 'react'
 
 export const metadata: Metadata = {
-  title: 'PixelWeb.ge - საიტის დამზადება საქართველოში 400₾-დან',
-  description: 'საიტის დამზადება საქართველოში 400₾-დან. სწრაფი მიწოდება, თანამედროვე დიზაინი, მობილურზე მორგებული ვებსაიტები და ხელმისაწვდომი ფასები.',
-  keywords: 'საიტის დამზადება, ვებსაიტის შექმნა, საიტის გაკეთება, ვებ დეველოპმენტი, საიტების დამზადება საქართველოში, ხელმისაწვდომი ფასები, PixelWeb',
+  title: 'PixelWeb.ge - საიტის დამზადება საქართველოში 600₾-დან',
+  description: 'საიტის დამზადება საქართველოში 600₾-დან. სწრაფი მიწოდება 3-21 დღეში, თანამედროვე დიზაინი, მობილურზე მორგებული ვებსაიტები და ბაზრის საშუალო ფასებზე 30%-ით იაფი ფასები.',
+  keywords: 'საიტის დამზადება, ვებსაიტის შექმნა, საიტის გაკეთება, ვებ დეველოპმენტი, საიტების დამზადება საქართველოში, ხელმისაწვდომი ფასები, საიტი იაფად, საიტი თბილისში, საიტის დამზადების ფასი, ვებ დიზაინი, Landing Page დამზადება, ბიზნეს საიტი, ინტერნეტ მაღაზია, PixelWeb',
   authors: [{ name: 'PixelWeb.ge' }],
   metadataBase: new URL('https://pixelweb.ge'),
   openGraph: {
-    title: 'PixelWeb.ge - საიტის დამზადება საქართველოში 400₾-დან',
+    title: 'PixelWeb.ge - საიტის დამზადება საქართველოში 600₾-დან',
     description: 'ვებსაიტების დამზადება, საიტის გაკეთება და თანამედროვე ვებგვერდები ხელმისაწვდომ ფასად.',
     type: 'website',
     url: 'https://pixelweb.ge',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'PixelWeb.ge - საიტის დამზადება საქართველოში 400₾-დან',
+    title: 'PixelWeb.ge - საიტის დამზადება საქართველოში 600₾-დან',
     description: 'საიტის დამზადება, თანამედროვე დიზაინი და სწრაფი ვებსაიტები თქვენი ბიზნესისთვის.',
   },
   verification: {
@@ -151,19 +151,77 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'LocalBusiness',
+              '@type': 'ProfessionalService',
               '@id': 'https://pixelweb.ge/#localbusiness',
               name: 'PixelWeb.ge',
-              description: 'პროფესიონალური ვებსაიტების დამზადება ხელმისაწვდომ ფასად საქართველოში',
+              alternateName: 'PixelWeb',
+              description: 'პროფესიონალური ვებსაიტების დამზადება ხელმისაწვდომ ფასად საქართველოში — Landing Page, ბიზნეს საიტი, ონლაინ მაღაზია, ვებ დიზაინი და SEO.',
               url: 'https://pixelweb.ge',
+              logo: 'https://pixelweb.ge/images/logo.png',
+              image: 'https://pixelweb.ge/images/logo.png',
               telephone: '+995591410914',
               email: 'pixelweb2026@gmail.com',
               address: {
                 '@type': 'PostalAddress',
                 addressLocality: 'თბილისი',
+                addressRegion: 'Tbilisi',
                 addressCountry: 'GE',
               },
-              priceRange: '₾₾',
+              areaServed: [
+                { '@type': 'Country', name: 'Georgia' },
+                { '@type': 'City', name: 'Tbilisi' },
+                { '@type': 'City', name: 'Batumi' },
+                { '@type': 'City', name: 'Kutaisi' },
+                { '@type': 'City', name: 'Rustavi' },
+              ],
+              priceRange: '600₾ - 8000₾',
+              currenciesAccepted: 'GEL',
+              paymentAccepted: 'Bank transfer, Cash',
+              sameAs: [
+                'https://www.instagram.com/pixelweb.ge/',
+                'https://www.facebook.com/profile.php?id=61584036537327',
+              ],
+              hasOfferCatalog: {
+                '@type': 'OfferCatalog',
+                name: 'PixelWeb სერვისები',
+                itemListElement: [
+                  {
+                    '@type': 'Offer',
+                    itemOffered: { '@type': 'Service', name: 'Landing Page-ის დამზადება' },
+                    priceCurrency: 'GEL',
+                    price: '600',
+                    url: 'https://pixelweb.ge/landing-page-damzadeba',
+                  },
+                  {
+                    '@type': 'Offer',
+                    itemOffered: { '@type': 'Service', name: 'ბიზნეს საიტის დამზადება' },
+                    priceCurrency: 'GEL',
+                    price: '1500',
+                    url: 'https://pixelweb.ge/biznes-saiti',
+                  },
+                  {
+                    '@type': 'Offer',
+                    itemOffered: { '@type': 'Service', name: 'ინტერნეტ მაღაზიის დამზადება' },
+                    priceCurrency: 'GEL',
+                    price: '4000',
+                    url: 'https://pixelweb.ge/internet-magaziis-damzadeba',
+                  },
+                  {
+                    '@type': 'Offer',
+                    itemOffered: { '@type': 'Service', name: 'ვებ დიზაინი' },
+                    priceCurrency: 'GEL',
+                    price: '600',
+                    url: 'https://pixelweb.ge/veb-dizaini',
+                  },
+                  {
+                    '@type': 'Offer',
+                    itemOffered: { '@type': 'Service', name: 'საიტის რედიზაინი' },
+                    priceCurrency: 'GEL',
+                    price: '800',
+                    url: 'https://pixelweb.ge/saitis-redizaini',
+                  },
+                ],
+              },
               openingHoursSpecification: [
                 {
                   '@type': 'OpeningHoursSpecification',

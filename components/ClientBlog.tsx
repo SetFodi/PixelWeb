@@ -49,6 +49,111 @@ const posts = [
             ka: 'ფასები',
             en: 'Pricing'
         }
+    },
+    {
+        slug: 'wordpress-vs-custom-code',
+        title: {
+            ka: 'WordPress თუ Custom Code — რომელი ჯობია ქართული ბიზნესისთვის?',
+            en: 'WordPress vs Custom Code — Which Is Better for Georgian Businesses?'
+        },
+        excerpt: {
+            ka: 'შევადაროთ ფასი, სიჩქარე, SEO და მოქნილობა. რა შემთხვევაში გჯობს WordPress და როდის Next.js?',
+            en: 'Comparing price, speed, SEO, and flexibility. When to choose WordPress and when Next.js?'
+        },
+        date: {
+            ka: '15 დეკემბერი, 2025',
+            en: 'December 15, 2025'
+        },
+        author: 'PixelWeb Team',
+        image: '/images/andcode.jpg',
+        category: {
+            ka: 'ტექნოლოგია',
+            en: 'Technology'
+        }
+    },
+    {
+        slug: 'seo-safudzvlebi-qartuli-biznesisthvis',
+        title: {
+            ka: 'SEO საფუძვლები ქართული ბიზნესისთვის 2026 წელს',
+            en: 'SEO Basics for Georgian Businesses in 2026'
+        },
+        excerpt: {
+            ka: 'როგორ მოახდინოთ თქვენი საიტი Google-ის პირველ გვერდზე ქართულ ბაზარზე. 7 პრაქტიკული ნაბიჯი.',
+            en: 'How to get your site on the first Google page in the Georgian market. 7 practical steps.'
+        },
+        date: {
+            ka: '5 იანვარი, 2026',
+            en: 'January 5, 2026'
+        },
+        author: 'PixelWeb Team',
+        image: '/images/TypingY.png',
+        category: {
+            ka: 'SEO',
+            en: 'SEO'
+        }
+    },
+    {
+        slug: 'restornisthvis-saiti-ra-unda-hkondes',
+        title: {
+            ka: 'რესტორნისთვის საიტი — რა უნდა ჰქონდეს აუცილებლად?',
+            en: 'A Restaurant Website — What Must It Have?'
+        },
+        excerpt: {
+            ka: 'მენიუ, ჯავშანი, Google Maps და ფოტოები. რესტორნის საიტის სრული გზამკვლევი.',
+            en: 'Menu, reservations, Google Maps, and photos. A complete guide to restaurant websites.'
+        },
+        date: {
+            ka: '20 თებერვალი, 2026',
+            en: 'February 20, 2026'
+        },
+        author: 'PixelWeb Team',
+        image: '/images/Restauran1.jpg',
+        category: {
+            ka: 'რესტორნები',
+            en: 'Restaurants'
+        }
+    },
+    {
+        slug: 'landing-page-tu-biznes-saiti',
+        title: {
+            ka: 'Landing Page თუ ბიზნეს საიტი — რომელი აირჩიოთ?',
+            en: 'Landing Page or Business Website — Which to Choose?'
+        },
+        excerpt: {
+            ka: 'ხშირი დილემა. ვუხსნით განსხვავებას ფასში, სტრუქტურასა და გამოყენებაში.',
+            en: 'A common dilemma. We explain the difference in price, structure, and usage.'
+        },
+        date: {
+            ka: '12 მარტი, 2026',
+            en: 'March 12, 2026'
+        },
+        author: 'PixelWeb Team',
+        image: '/images/Furniture2.jpg',
+        category: {
+            ka: 'სტრატეგია',
+            en: 'Strategy'
+        }
+    },
+    {
+        slug: 'saiti-mcire-biznesisthvis-5-nabiji',
+        title: {
+            ka: 'საიტი მცირე ბიზნესისთვის — 5 აუცილებელი ნაბიჯი',
+            en: 'A Small Business Website — 5 Essential Steps'
+        },
+        excerpt: {
+            ka: 'რა გჭირდებათ მცირე ბიზნესის საიტისთვის და როგორ დაიწყოთ მინიმალური ბიუჯეტით.',
+            en: 'What you need for a small business website and how to start on a minimal budget.'
+        },
+        date: {
+            ka: '5 აპრილი, 2026',
+            en: 'April 5, 2026'
+        },
+        author: 'PixelWeb Team',
+        image: '/images/casedelight.jpg',
+        category: {
+            ka: 'მცირე ბიზნესი',
+            en: 'Small Business'
+        }
     }
 ]
 
