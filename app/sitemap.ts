@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { baseUrl, seoServiceSlugs } from '@/constants/seoServices'
+import { projectSlugs } from '@/constants/projects'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const mainPages: MetadataRoute.Sitemap = [
@@ -63,5 +64,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }))
 
-  return [...mainPages, ...servicePages, ...blogPosts]
+  const projectPages: MetadataRoute.Sitemap = projectSlugs.map((slug) => ({
+    url: `${baseUrl}/portfolio/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
+  return [...mainPages, ...servicePages, ...blogPosts, ...projectPages]
 }
