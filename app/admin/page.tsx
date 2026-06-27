@@ -132,8 +132,8 @@ const AdminPage = () => {
 
   const contactInfo = [
     { icon: <FaEnvelope />, label: 'Email', value: 'pixelweb2026@gmail.com' },
-    { icon: <FaWhatsapp />, label: 'WhatsApp', value: '+995 591 410 914' },
-    { icon: <FaPhone />, label: 'Phone', value: '+995 591 410 914' },
+    { icon: <FaWhatsapp />, label: 'WhatsApp', value: '557100020' },
+    { icon: <FaPhone />, label: 'Phone', value: '557100020' },
   ]
 
   const sitePages = [

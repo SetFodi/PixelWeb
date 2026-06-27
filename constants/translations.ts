@@ -228,7 +228,7 @@ export const translations = {
             },
             info: {
                 address: { title: 'მისამართი', value: 'თბილისი, საქართველო', sub: 'დისტანციურად მივიღებთ შეკვეთებს მთელი საქართველოდან' },
-                phone: { title: 'ტელეფონი', value: '+995 591 410 914', sub: 'ორშაბათი - პარასკევი: 10:00 - 21:00' },
+                phone: { title: 'ტელეფონი', value: '557100020', sub: 'ორშაბათი - პარასკევი: 10:00 - 21:00' },
                 email: { title: 'ელ-ფოსტა', value: 'pixelweb2026@gmail.com', sub: 'პასუხს გიგზავნით მაქსიმალურად სწრაფად' }
             },
             form: {
@@ -561,7 +561,7 @@ export const translations = {
             },
             info: {
                 address: { title: 'Address', value: 'Tbilisi, Georgia', sub: 'We accept orders remotely from all over Georgia' },
-                phone: { title: 'Phone', value: '+995 591 410 914', sub: 'Monday - Friday: 10:00 - 21:00' },
+                phone: { title: 'Phone', value: '557100020', sub: 'Monday - Friday: 10:00 - 21:00' },
                 email: { title: 'Email', value: 'pixelweb2026@gmail.com', sub: 'We reply as quickly as possible' }
             },
             form: {
