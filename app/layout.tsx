@@ -1,16 +1,11 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 import { ThemeProvider } from '@/components/ThemeProvider'
-import PageLoader from '@/components/PageLoader'
 import { Analytics } from '@vercel/analytics/react'
 import Script from 'next/script'
-import ScrollToTopButton from '@/components/ScrollToTopButton'
-import WhatsAppButton from '@/components/WhatsAppButton'
-import StickyContactBar from '@/components/StickyContactBar'
 import { LanguageProvider } from '@/context/LanguageContext'
 import MotionProvider from '@/components/MotionProvider'
+import SiteChrome from '@/components/SiteChrome'
 
 export const metadata: Metadata = {
   title: 'საიტის დამზადება 600₾-დან | PixelWeb.ge',
@@ -223,15 +218,7 @@ export default function RootLayout({
         <MotionProvider>
           <ThemeProvider>
             <LanguageProvider>
-              <PageLoader />
-              <Navbar />
-              <main className="min-h-screen">
-                {children}
-              </main>
-              <Footer />
-              <ScrollToTopButton />
-              <StickyContactBar />
-              <WhatsAppButton />
+              <SiteChrome>{children}</SiteChrome>
               <Analytics />
             </LanguageProvider>
           </ThemeProvider>
