@@ -250,7 +250,18 @@ export default function RootLayout({
             gtag('config', 'AW-17780075400');
             gtag('config', 'G-Y0XDPJDSKN');
 
+            var lastLeadConversionAt = 0;
+
             window.reportConversion = function(url) {
+              var now = Date.now();
+              if (now - lastLeadConversionAt < 1200) {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+                return false;
+              }
+              lastLeadConversionAt = now;
+
               var callback = function () {
                 if (typeof(url) != 'undefined') {
                   window.location = url;
@@ -264,6 +275,24 @@ export default function RootLayout({
               });
               return false;
             }
+
+            document.addEventListener('click', function(event) {
+              var target = event.target;
+              var link = target && target.closest ? target.closest('a[href]') : null;
+              if (!link) return;
+
+              var href = link.getAttribute('href') || '';
+              var isWhatsAppLead = href.indexOf('wa.me/995557100020') !== -1;
+              var isPhoneLead = href === 'tel:557100020' || href === 'tel:+995557100020' || href === 'tel:995557100020';
+
+              if (isWhatsAppLead || isPhoneLead) {
+                gtag('event', 'lead_click', {
+                  event_category: 'lead',
+                  event_label: isWhatsAppLead ? 'whatsapp' : 'phone',
+                });
+                window.reportConversion();
+              }
+            });
           `}
         </Script>
       </body>
