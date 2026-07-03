@@ -117,7 +117,7 @@ pixelweb/
 │   ├── ThemeProvider.tsx, ThemeToggle.tsx
 │   ├── PageLoader.tsx, PageTransition.tsx, ScrollToTopButton.tsx
 │   ├── ImageSlider.tsx, ImageWithLoader.tsx, LoadingSpinner.tsx
-│   └── ProjectModal.tsx, VisitorTracker.tsx
+│   └── ProjectModal.tsx
 ├── public/
 │   └── images/               # სურათების ფოლდერი
 ├── next.config.js
@@ -156,8 +156,6 @@ colors: {
 - `POST /api/contact` – ფორმის გაგზავნა (Resend API ინტეგრაციისთვის მზად). Env:
   - `RESEND_API_KEY` (არასავალდებულო Dev რეჟიმში)
   - `CONTACT_EMAIL` (ნაგულისხმევად `info@pixelweb.ge`)
-- `POST /api/track` – მარტივი ვიზიტორების ტრეკინგი (in-memory, Dev)
-- `GET /api/track` – ბოლო ვიზიტების სტატისტიკა (Dev)
 
 ## 📱 მობილურზე ტესტირება
 

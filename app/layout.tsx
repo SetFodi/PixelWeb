@@ -4,14 +4,13 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import PageLoader from '@/components/PageLoader'
-import VisitorTracker from '@/components/VisitorTracker'
 import { Analytics } from '@vercel/analytics/react'
+import Script from 'next/script'
 import ScrollToTopButton from '@/components/ScrollToTopButton'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import StickyContactBar from '@/components/StickyContactBar'
-import OnlineCounter from '@/components/OnlineCounter'
 import { LanguageProvider } from '@/context/LanguageContext'
-import { Suspense } from 'react'
+import MotionProvider from '@/components/MotionProvider'
 
 export const metadata: Metadata = {
   title: 'საიტის დამზადება 600₾-დან | PixelWeb.ge',
@@ -82,34 +81,7 @@ export default function RootLayout({
   return (
     <html lang="ka" suppressHydrationWarning>
       <head>
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17780075400"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-17780075400');
-              gtag('config', 'G-Y0XDPJDSKN');
-
-              window.reportConversion = function(url) {
-                var callback = function () {
-                  if (typeof(url) != 'undefined') {
-                    window.location = url;
-                  }
-                };
-                gtag('event', 'conversion', {
-                    'send_to': 'AW-17780075400/7yHCCKyB9csbEIjXmZ5C',
-                    'value': 1.0,
-                    'currency': 'USD',
-                    'event_callback': callback
-                });
-                return false;
-              }
-            `,
-          }}
-        />
+        {/* Critical theme script — must run before paint to avoid a flash of the wrong theme */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -248,22 +220,52 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <ThemeProvider>
-          <LanguageProvider>
-            <PageLoader />
-            <VisitorTracker />
-            <Navbar />
-            <main className="min-h-screen">
-              {children}
-            </main>
-            <Footer />
-            <ScrollToTopButton />
-            <StickyContactBar />
-            <WhatsAppButton />
-            <OnlineCounter />
-            <Analytics />
-          </LanguageProvider>
-        </ThemeProvider>
+        <MotionProvider>
+          <ThemeProvider>
+            <LanguageProvider>
+              <PageLoader />
+              <Navbar />
+              <main className="min-h-screen">
+                {children}
+              </main>
+              <Footer />
+              <ScrollToTopButton />
+              <StickyContactBar />
+              <WhatsAppButton />
+              <Analytics />
+            </LanguageProvider>
+          </ThemeProvider>
+        </MotionProvider>
+
+        {/* Google tag (gtag.js) — loaded after the page becomes interactive */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17780075400"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17780075400');
+            gtag('config', 'G-Y0XDPJDSKN');
+
+            window.reportConversion = function(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                  'send_to': 'AW-17780075400/7yHCCKyB9csbEIjXmZ5C',
+                  'value': 1.0,
+                  'currency': 'USD',
+                  'event_callback': callback
+              });
+              return false;
+            }
+          `}
+        </Script>
       </body>
     </html>
   )

@@ -7,10 +7,6 @@ export const metadata: Metadata = {
   keywords: 'საიტის დამზადება, საიტების დამზადება, ვებსაიტის შექმნა, საიტის გაკეთება, საიტის ყიდვა, საიტების დამზადება საქართველოში, საიტები იაფად, saitis damzadeba, saitebis damzadeba, ვებ დეველოპმენტი საქართველო',
   alternates: {
     canonical: 'https://pixelweb.ge',
-    languages: {
-      'ka-GE': 'https://pixelweb.ge',
-      'en-US': 'https://pixelweb.ge',
-    },
   },
   openGraph: {
     title: 'საიტის დამზადება 600₾-დან | 3-5 დღეში | PixelWeb',
