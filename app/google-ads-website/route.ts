@@ -1,6 +1,8 @@
 const phone = '557 10 00 20'
 const phoneHref = 'tel:557100020'
 const email = 'pixelweb2026@gmail.com'
+const googleAdsId = 'AW-17780075400'
+const googleAdsLeadConversion = 'AW-17780075400/7yHCCKyB9csbEIjXmZ5C'
 const whatsappHref =
   'https://wa.me/995557100020?text=Hello%2C%20I%20want%20a%20website%20for%20my%20business'
 
@@ -13,6 +15,63 @@ const html = `<!doctype html>
   <meta name="description" content="PixelWeb builds fast landing pages and business websites in Georgia. Prices start from 600 GEL with quick delivery and WhatsApp consultation.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://www.pixelweb.ge/google-ads-website">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=${googleAdsId}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${googleAdsId}');
+    gtag('config', 'G-Y0XDPJDSKN');
+
+    var lastLeadConversionAt = 0;
+
+    window.reportLeadConversion = function(url) {
+      var now = Date.now();
+      if (now - lastLeadConversionAt < 1200) {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+        return false;
+      }
+      lastLeadConversionAt = now;
+
+      var didNavigate = false;
+      var callback = function () {
+        if (didNavigate || typeof(url) == 'undefined') return;
+        didNavigate = true;
+        window.location = url;
+      };
+
+      gtag('event', 'conversion', {
+        'send_to': '${googleAdsLeadConversion}',
+        'value': 1.0,
+        'currency': 'USD',
+        'event_callback': callback
+      });
+
+      setTimeout(callback, 900);
+      return false;
+    };
+
+    document.addEventListener('click', function(event) {
+      var target = event.target;
+      var link = target && target.closest ? target.closest('a[href]') : null;
+      if (!link) return;
+
+      var href = link.getAttribute('href') || '';
+      var isWhatsAppLead = href.indexOf('wa.me/995557100020') !== -1;
+      var isPhoneLead = href === 'tel:557100020' || href === 'tel:+995557100020' || href === 'tel:995557100020';
+
+      if (isWhatsAppLead || isPhoneLead) {
+        event.preventDefault();
+        gtag('event', 'lead_click', {
+          event_category: 'lead',
+          event_label: isWhatsAppLead ? 'whatsapp' : 'phone'
+        });
+        window.reportLeadConversion(href);
+      }
+    });
+  </script>
   <style>
     :root {
       color-scheme: light;
