@@ -14,10 +14,10 @@ export const translations = {
             online: 'ონლაინ'
         },
         hero: {
-            badge: '🚀 თანამედროვე ვებ ტექნოლოგიები',
-            title: 'ვქმნით',
-            titleHighlight: 'ციფრულ გამოცდილებას',
-            subtitle: 'ვებსაიტების დამზადება ყველაზე ხელმისაწვდომ ფასად საქართველოში. ჩვენ დაგეხმარებით თქვენი ბიზნესის ციფრულ ტრანსფორმაციაში.',
+            badge: 'ფასი და ვადა წინასწარ • უფასო კონსულტაცია',
+            title: 'საიტის დამზადება',
+            titleHighlight: 'საქართველოში 600₾-დან',
+            subtitle: 'ვქმნით სწრაფ Landing Page-ებს, ბიზნეს საიტებსა და ონლაინ მაღაზიებს. Landing Page მზადაა 3-5 დღეში — მობილური დიზაინით, SEO საფუძვლებით და კონტაქტის მარტივი გზებით.',
             startProject: 'დაიწყე პროექტი',
             ourServices: 'ჩვენი სერვისები',
             stats: {
@@ -349,10 +349,10 @@ export const translations = {
             online: 'Online'
         },
         hero: {
-            badge: '🚀 Modern Web Technologies',
-            title: 'Creating',
-            titleHighlight: 'Digital Experiences',
-            subtitle: 'Website development at the most affordable prices in Georgia. We help digitally transform your business.',
+            badge: 'Clear price and timeline • Free consultation',
+            title: 'Website development',
+            titleHighlight: 'in Georgia from 600 GEL',
+            subtitle: 'Fast landing pages, business websites, and online stores built for mobile, search visibility, and easy customer contact. Landing pages are ready in 3-5 days.',
             startProject: 'Start Project',
             ourServices: 'Our Services',
             stats: {

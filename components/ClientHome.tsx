@@ -180,6 +180,53 @@ const ClientHome = () => {
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="relative pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 bg-white dark:bg-transparent overflow-hidden transition-colors duration-300">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <motion.div
+              initial={false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center max-w-4xl mx-auto"
+            >
+              <p className="mb-5 inline-flex items-center rounded-full border border-primary-200 bg-primary-50/90 px-4 py-2 text-sm font-semibold text-primary-800 shadow-sm dark:border-primary-700 dark:bg-gray-900 dark:text-primary-300">
+                {t.hero.badge}
+              </p>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
+                {t.hero.title}
+                <span className="block text-[1.65rem] text-primary-600 dark:text-primary-400 mt-2 sm:text-4xl md:text-5xl lg:text-6xl">{t.hero.titleHighlight}</span>
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl leading-8 text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
+                {t.hero.subtitle}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+                <Link
+                  href="/saitis-damzadeba"
+                  className="bg-primary-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-primary-700 transition-all hover:shadow-xl transform hover:-translate-y-1 font-semibold text-base sm:text-lg inline-flex items-center justify-center"
+                >
+                  {t.footer.serviceItems.websiteCreation}
+                  <FaArrowRight className="ml-2" />
+                </Link>
+                <Link
+                  href="/portfolio"
+                  className="bg-white text-primary-600 border-2 border-primary-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-primary-50 transition-all hover:shadow-xl transform hover:-translate-y-1 font-semibold text-base sm:text-lg"
+                >
+                  {t.services.hero.portfolio}
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Stats with animated counters */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-12 mt-10 sm:mt-12 md:mt-16 max-w-3xl mx-auto"
+            >
+              {stats.map((stat, index) => (
+                <AnimatedStat key={index} number={stat.number} suffix={stat.suffix} label={stat.label} />
+              ))}
+            </motion.div>
+          </div>
+
           {/* Enhanced Animated Background Mesh */}
           <div className="absolute inset-0 z-0 pointer-events-none">
             <motion.div
@@ -273,6 +320,8 @@ const ClientHome = () => {
           {/* Floating iPhone Mockup - Ultra-Realistic & Polished */}
           <motion.div
             className="absolute top-32 right-[6%] hidden xl:block pointer-events-none will-change-transform"
+            aria-hidden="true"
+            data-nosnippet=""
             initial={{ opacity: 0, x: 50 }}
             animate={{
               opacity: 1,
@@ -360,6 +409,8 @@ const ClientHome = () => {
           {/* Floating MacBook Mockup - Refined & Scaled */}
           <motion.div
             className="absolute bottom-32 left-[5%] hidden xl:block pointer-events-none will-change-transform"
+            aria-hidden="true"
+            data-nosnippet=""
             initial={{ opacity: 0, x: -50 }}
             animate={{
               opacity: 1,
@@ -442,49 +493,6 @@ const ClientHome = () => {
             </motion.div>
           </motion.div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center max-w-4xl mx-auto"
-            >
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
-                {t.hero.title}
-                <span className="block text-primary-600 dark:text-primary-400 mt-2">{t.hero.titleHighlight}</span>
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
-                {t.hero.subtitle}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-                <Link
-                  href="/saitis-damzadeba"
-                  className="bg-primary-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-primary-700 transition-all hover:shadow-xl transform hover:-translate-y-1 font-semibold text-base sm:text-lg inline-flex items-center justify-center"
-                >
-                  {t.footer.serviceItems.websiteCreation}
-                  <FaArrowRight className="ml-2" />
-                </Link>
-                <Link
-                  href="/portfolio"
-                  className="bg-white text-primary-600 border-2 border-primary-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-primary-50 transition-all hover:shadow-xl transform hover:-translate-y-1 font-semibold text-base sm:text-lg"
-                >
-                  {t.services.hero.portfolio}
-                </Link>
-              </div>
-            </motion.div>
-
-            {/* Stats with animated counters */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-12 mt-10 sm:mt-12 md:mt-16 max-w-3xl mx-auto"
-            >
-              {stats.map((stat, index) => (
-                <AnimatedStat key={index} number={stat.number} suffix={stat.suffix} label={stat.label} />
-              ))}
-            </motion.div>
-          </div>
         </section>
 
         {/* Features Section - Enhanced */}

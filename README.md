@@ -157,6 +157,20 @@ colors: {
   - `RESEND_API_KEY` (არასავალდებულო Dev რეჟიმში)
   - `CONTACT_EMAIL` (ნაგულისხმევად `info@pixelweb.ge`)
 
+## 🔎 IndexNow
+
+IndexNow-ის კლავიში ქვეყნდება საიტის რუტში. ახალი ვერსიის production-ზე გაშვების შემდეგ გაუშვით:
+
+```bash
+npm run indexnow
+```
+
+ბრძანება production sitemap-იდან კითხულობს ყველა კანონიკურ URL-ს და აქვეყნებს IndexNow-ში. მხოლოდ კონკრეტული განახლებული გვერდის გასაგზავნად:
+
+```bash
+npm run indexnow -- https://pixelweb.ge/saitis-damzadeba
+```
+
 ## 📱 მობილურზე ტესტირება
 
 ```bash
@@ -211,4 +225,3 @@ vercel
 ---
 
 შექმნილია ❤️-ით PixelWeb.ge-ის მიერ
-

@@ -10,12 +10,11 @@ interface PageTransitionProps {
 const PageTransition = ({ children }: PageTransitionProps) => {
   const prefersReducedMotion = useReducedMotion()
   const duration = prefersReducedMotion ? 0 : 0.4
-  const initialY = prefersReducedMotion ? 0 : 20
   const exitY = prefersReducedMotion ? 0 : -20
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: initialY }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: exitY }}
       transition={{

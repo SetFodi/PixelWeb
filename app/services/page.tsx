@@ -15,11 +15,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ka_GE',
     siteName: 'PixelWeb.ge',
+    images: ['/opengraph-image'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'PixelWeb სერვისები და ფასები',
     description: 'Landing Page 600-1,200₾, ბიზნეს საიტი 1,500₾-დან, ონლაინ მაღაზია 4,000₾-დან.',
+    images: ['/opengraph-image'],
   },
 }
 

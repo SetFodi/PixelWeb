@@ -22,10 +22,10 @@ export const metadata: Metadata = {
     siteName: 'PixelWeb.ge',
     images: [
       {
-        url: '/images/logo.png',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'PixelWeb - ვებსაიტების დამზადება საქართველოში',
+        alt: 'PixelWeb - საიტის დამზადება საქართველოში 600₾-დან',
       },
     ],
   },
@@ -33,6 +33,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'საიტის დამზადება 600₾-დან | PixelWeb.ge',
     description: 'საიტის დამზადება, თანამედროვე დიზაინი და სწრაფი ვებსაიტები თქვენი ბიზნესისთვის.',
+    images: ['/opengraph-image'],
   },
   verification: {
     google: [

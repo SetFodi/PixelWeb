@@ -26,7 +26,7 @@ export function buildServiceMetadata(key: SeoServiceKey): Metadata {
       siteName: 'PixelWeb.ge',
       images: [
         {
-          url: '/images/logo.png',
+          url: '/opengraph-image',
           width: 1200,
           height: 630,
           alt: page.title,
@@ -37,7 +37,7 @@ export function buildServiceMetadata(key: SeoServiceKey): Metadata {
       card: 'summary_large_image',
       title: page.metaTitle,
       description: page.description,
-      images: ['/images/logo.png'],
+      images: ['/opengraph-image'],
     },
   }
 }

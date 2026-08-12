@@ -15,11 +15,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ka_GE',
     siteName: 'PixelWeb.ge',
+    images: ['/opengraph-image'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'PixelWeb კონტაქტი',
     description: 'WhatsApp, ზარი ან ფორმა — უფასო კონსულტაცია 24 საათში.',
+    images: ['/opengraph-image'],
   },
 }
 

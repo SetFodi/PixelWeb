@@ -8,6 +8,11 @@ export const metadata: Metadata = {
     'PixelWeb builds fast landing pages and business websites in Georgia. Prices start from 600 GEL with quick delivery and WhatsApp consultation.',
   alternates: {
     canonical: 'https://pixelweb.ge/website-design-georgia',
+    languages: {
+      'ka-GE': 'https://pixelweb.ge',
+      'en-GE': 'https://pixelweb.ge/website-design-georgia',
+      'x-default': 'https://pixelweb.ge',
+    },
   },
   openGraph: {
     title: 'Website Design in Georgia from 600 GEL | PixelWeb.ge',
@@ -16,6 +21,14 @@ export const metadata: Metadata = {
     url: 'https://pixelweb.ge/website-design-georgia',
     type: 'website',
     locale: 'en_US',
+    siteName: 'PixelWeb.ge',
+    images: ['/opengraph-image'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Website Design in Georgia from 600 GEL | PixelWeb.ge',
+    description: 'Fast landing pages and business websites for Georgian companies, with delivery from 3-5 days.',
+    images: ['/opengraph-image'],
   },
 }
 
@@ -45,7 +58,7 @@ const packages = [
 
 export default function WebsiteDesignGeorgiaPage() {
   return (
-    <div className="min-h-screen bg-white text-slate-950 dark:bg-slate-950 dark:text-white">
+    <div lang="en" className="min-h-screen bg-white text-slate-950 dark:bg-slate-950 dark:text-white">
       <header className="border-b border-slate-200 bg-white/95 dark:border-slate-800 dark:bg-slate-950/95">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
           <Link href="/" className="flex items-center gap-3 font-black text-xl text-slate-950 dark:text-white">

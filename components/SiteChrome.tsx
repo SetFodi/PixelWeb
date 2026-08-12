@@ -3,7 +3,6 @@
 import { usePathname } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import PageLoader from '@/components/PageLoader'
 import ScrollToTopButton from '@/components/ScrollToTopButton'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import StickyContactBar from '@/components/StickyContactBar'
@@ -23,7 +22,6 @@ export default function SiteChrome({ children }: SiteChromeProps) {
 
   return (
     <>
-      <PageLoader />
       <Navbar />
       <main className="min-h-screen">{children}</main>
       <Footer />

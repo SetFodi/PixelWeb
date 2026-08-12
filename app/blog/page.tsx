@@ -15,11 +15,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ka_GE',
     siteName: 'PixelWeb.ge',
+    images: ['/opengraph-image'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'PixelWeb ბლოგი — რჩევები საიტებზე და SEO-ზე',
     description: 'სტატიები საიტის დამზადებაზე, SEO-ზე და ფასებზე ქართულ ენაზე.',
+    images: ['/opengraph-image'],
   },
 }
 
